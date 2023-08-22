@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\User;
 use App\Models\UserCigarette;
 use App\Models\UserVape;
 use App\Repositories\Interfaces\DataSmokeDBRepositoryInterface;
@@ -10,13 +9,13 @@ use App\Repositories\Interfaces\DataSmokeDBRepositoryInterface;
 class DataSmokeDBRepository implements DataSmokeDBRepositoryInterface
 {
 
-    public static function getDataSmokeDBVapeTypeRepository(User $user)
+    public static function getDataSmokeDBVapeTypeRepository()
     {
-        return UserVape::where('user_id', $user->id)->get()[0];
+        return UserVape::where('user_id', auth()->user()->id)->get()[0];
     }
 
-    public static function getDataSmokeDBCigaretteTypeRepository(User $user)
+    public static function getDataSmokeDBCigaretteTypeRepository()
     {
-        return UserCigarette::where('user_id', $user->id)->get()[0];
+        return UserCigarette::where('user_id', auth()->user()->id)->get()[0];
     }
 }

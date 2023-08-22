@@ -41,7 +41,6 @@ class ProfileService
     public function storeStatistic($data, string $type): bool|UserCigarette|UserVape
     {
         $data['user_id'] = auth()->user()->id;
-
         $this->changeTypeSmoke($type);
 
         if ($type === 'cigarette') return UserCigarette::create($data);

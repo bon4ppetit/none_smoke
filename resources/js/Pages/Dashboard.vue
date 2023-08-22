@@ -7,7 +7,8 @@ import StructurePanel from "@/Pages/Home/StructurePanel.vue";
 import GoalPanel from "@/Pages/Home/GoalPanel.vue";
 
 const props = defineProps([
-    'basicInfoSmoke'
+    'basicInfoSmoke',
+    'goalsUser'
 ]);
 
 let viewForms = props.basicInfoSmoke !== false ? ref(false) : ref(true);
@@ -28,7 +29,7 @@ let viewForms = props.basicInfoSmoke !== false ? ref(false) : ref(true);
                     <StructurePanel v-else-if="viewForms === false" :basicInfoSmoke="basicInfoSmoke"></StructurePanel>
                 </div>
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" v-if="viewForms === false">
-                  <GoalPanel :basicInfoSmoke="basicInfoSmoke"></GoalPanel>
+                  <GoalPanel :basicInfoSmoke="basicInfoSmoke" :goalsUser="goalsUser"></GoalPanel>
                 </div>
             </div>
         </div>

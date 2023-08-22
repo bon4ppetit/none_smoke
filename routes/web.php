@@ -9,6 +9,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Profile\Home\ViewHomeController;
+use App\Http\Controllers\Profile\Goal\AddGoalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,10 @@ Route::get('image/basic_icon', GetImageController::class)->name('image.basic_ico
 
 Route::prefix('profile/achievement')->group(function () {
     Route::get('/', ViewAchievementsController::class)->name('achievement.home');
+});
+
+Route::prefix('profile')->group(function () {
+    Route::post('/goal', AddGoalController::class)->name('goal.add');
 });
 
 Route::middleware('auth')->group(function () {
