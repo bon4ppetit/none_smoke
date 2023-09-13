@@ -2,14 +2,15 @@
 
 use App\Http\Controllers\Image\GetImageController;
 use App\Http\Controllers\Profile\Achieve\ViewAchievementsController;
+use App\Http\Controllers\Profile\Goal\AddGoalController;
+use App\Http\Controllers\Profile\Home\ViewHomeController;
+use App\Http\Controllers\Profile\Statistic\AddCigaretteStatisticController;
 use App\Http\Controllers\Profile\Statistic\AddVapeStatisticController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Profile\Statistic\AddCigaretteStatisticController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\Profile\Home\ViewHomeController;
-use App\Http\Controllers\Profile\Goal\AddGoalController;
+use App\Http\Controllers\API\ProgressController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,4 +55,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::prefix('progress')->group(function () {
+    Route::post('/destroy', [ProgressController::class, 'destroy'])->name('progress.destroy');
+});
+
+require __DIR__ . '/auth.php';

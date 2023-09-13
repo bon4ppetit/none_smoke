@@ -1,7 +1,21 @@
 <script setup>
+
 const props = defineProps([
-    'basicInfoSmoke'
-])
+    'basicInfoSmoke',
+]);
+
+function destroyProgress() {
+  axios.post(route('progress.destroy'))
+      .then((resp) => {
+        if (resp.data['status'] === 'success')
+          window.location.reload();
+        else if (resp.data['status'] === 'error')
+          console.log(resp.data)
+      })
+      .catch((err) => {
+        console.log(err.data)
+      })
+}
 </script>
 
 <template>
@@ -28,6 +42,13 @@ const props = defineProps([
                 <span class="text-zinc-400 text-center text-sm">
                     Вы сэкономили
                 </span>
+            </div>
+            <div class="flex flex-col justify-center items-center mb-4">
+              <button @click="destroyProgress" class="text-red-500 bg-red-900/80 px-3 py-2 rounded-lg border-2 border-red-600">
+                Сбросить
+                <br>
+                статистику
+              </button>
             </div>
             <div class="flex flex-col items-center mb-4">
             <span class="text-3xl font-bold text-violet-700 block">
