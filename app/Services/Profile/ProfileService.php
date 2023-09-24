@@ -18,10 +18,12 @@ class ProfileService
 
     /**
      *  Change the user's profile type smoking
+     *
      * @param string $type
+     *
      * @return \Exception|string
      */
-    protected function changeTypeSmoke(string $type): \Exception|string
+    public static function changeTypeSmoke(string $type): \Exception|string
     {
         try {
             return auth()->user()->update(['type_smoke' => $type]);
@@ -29,23 +31,6 @@ class ProfileService
         catch (\Exception $e) {
             return $e;
         }
-    }
-
-
-    /**
-     *  Store the user's profile statistic
-     * @param $data
-     * @param string $type
-     * @return false|UserCigarette|UserVape
-     */
-    public function storeStatistic($data, string $type): bool|UserCigarette|UserVape
-    {
-        $data['user_id'] = auth()->user()->id;
-        $this->changeTypeSmoke($type);
-
-        if ($type === 'cigarette') return UserCigarette::create($data);
-        elseif ($type === 'vape') return UserVape::create($data);
-        else return false;
     }
 
     /**

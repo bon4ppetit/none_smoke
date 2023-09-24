@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\ProgressController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\GoalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::prefix('progress')->group(function () {
+    Route::delete('/', [ProgressController::class, 'destroy'])->name('progress.destroy');
+    Route::post('/', [ProgressController::class, 'storeSmokeProgress'])->name('profile.statistic.store');
+});
+
+Route::prefix('profile')->group(function () {
+    Route::post('/', [GoalController::class, 'add'])->name('goal.add');
+});

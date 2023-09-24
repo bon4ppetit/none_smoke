@@ -1,15 +1,18 @@
 <script setup>
     import {ref} from "vue";
 
-    let time = ref();
+    let date_start_smoke = ref();
+    let date_finish_smoke = ref();
     let priceJar = ref();
     let countJar = ref();
     let priceCart = ref();
     let countCart = ref();
 
     function sendData() {
-        axios.post(route('profile.statistic.add.vape'), {
-            how_long_smoke: time.value,
+        axios.post(route('profile.statistic.store'), {
+            type_smoke: 'vape',
+            date_start_smoke: date_start_smoke.value,
+            date_finish_smoke: date_finish_smoke.value,
             price_jar: priceJar.value,
             count_jar_a_month: countJar.value,
             price_vape_vaporizer: priceCart.value,
@@ -30,13 +33,16 @@
     <div class="m-auto flex justify-center items-center">
         <div class="max-w-6xl flex-auto grid grid-cols-3 justify-center">
             <div class="m-3 flex flex-col justify-center">
-                <div class="mb-3">Как долго вы парили?</div>
+                <div class="mb-3">Когда вы начали парить?</div>
                 <div class="">
-                    <input  v-model="time" class="bg-gray-700 rounded p-3" type="number" maxlength="4">
-                    <span class="ml-2">
-                        мес
-                    </span>
+                    <input v-model="date_start_smoke" class="bg-gray-700 rounded p-3" type="date">
                 </div>
+            </div>
+            <div class="m-3 flex flex-col justify-center">
+              <div class="mb-3">Когда вы решили бросить парить?</div>
+              <div class="">
+                <input  v-model="date_finish_smoke" class="bg-gray-700 rounded p-3" type="date">
+              </div>
             </div>
             <div class="m-3 flex flex-col justify-center">
                 <div class="mb-3">Сколько стоила банка жидкости?</div>

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Repositories\DataSmokeDBRepository;
+use App\Repositories\SmokeDBRepository;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,7 +12,9 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -37,23 +39,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the user's data smoke from database
-     * @return mixed
-     */
-    protected function getDataSmokeDBUser(): mixed
-    {
-        if ($this->getUserTypeSmoke() === 'vape') {
-            return DataSmokeDBRepository::getDataSmokeDBVapeTypeRepository(auth()->user());
-        } else {
-            if ($this->getUserTypeSmoke() === 'cigarette') {
-                return DataSmokeDBRepository::getDataSmokeDBCigaretteTypeRepository(auth()->user());
-            } else {
-                return false;
-            }
-        }
-    }
-
-    /**
      * The attributes that should be cast.
      *
      * @var array<string, string>
@@ -63,6 +48,20 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    /**
+     * Get the user's data smoke from database
+     * @return mixed
+     */
+    protected function getDataSmokeDBUser(): mixed
+    {
+        if ($this->getUserTypeSmoke() === 'vape') {
+            return SmokeDBRepository::getDataSmokeDBVapeTypeRepository(auth()->user());
+        } elseif ($this->getUserTypeSmoke() === 'cigarette') {
+            return SmokeDBRepository::getDataSmokeDBCigaretteTypeRepository(auth()->user());
+        } else {
+            return false;
+        }
+    }
 
     /**
      * Get the user's type smoke
@@ -100,12 +99,10 @@ class User extends Authenticatable
     {
         if ($this->getUserTypeSmoke() === 'vape') {
             return UserVape::getMoneySavingVape();
+        } elseif ($this->getUserTypeSmoke() === 'cigarette') {
+            return UserCigarette::getMoneySavingCigarette();
         } else {
-            if ($this->getUserTypeSmoke() === 'cigarette') {
-                return UserCigarette::getMoneySavingCigarette();
-            } else {
-                return false;
-            }
+            return false;
         }
     }
 
@@ -117,12 +114,10 @@ class User extends Authenticatable
     {
         if ($this->getUserTypeSmoke() === 'vape') {
             return UserVape::getMoneySpendVape();
+        } elseif ($this->getUserTypeSmoke() === 'cigarette') {
+            return UserCigarette::getMoneySpendCigarette();
         } else {
-            if ($this->getUserTypeSmoke() === 'cigarette') {
-                return UserCigarette::getMoneySpendCigarette();
-            } else {
-                return false;
-            }
+            return false;
         }
     }
 
@@ -148,7 +143,7 @@ class User extends Authenticatable
      *
      * @return string[]
      */
-    protected function resetProgress()
+    protected function resetProgress(): array
     {
         try {
             DB::table('user_type_' . $this->getUserTypeSmoke())

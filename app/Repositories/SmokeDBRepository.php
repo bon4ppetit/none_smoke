@@ -6,7 +6,7 @@ use App\Models\UserCigarette;
 use App\Models\UserVape;
 use App\Repositories\Interfaces\DataSmokeDBRepositoryInterface;
 
-class DataSmokeDBRepository implements DataSmokeDBRepositoryInterface
+class SmokeDBRepository implements DataSmokeDBRepositoryInterface
 {
 
     public static function getDataSmokeDBVapeTypeRepository()

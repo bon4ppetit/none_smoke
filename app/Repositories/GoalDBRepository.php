@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Goal;
 use App\Repositories\Interfaces\DataGoalDBRepositoryInterface;
 
-class DataGoalDBRepository implements DataGoalDBRepositoryInterface
+class GoalDBRepository implements DataGoalDBRepositoryInterface
 {
     public static function getUserAllGoalsDBRepository()
     {
