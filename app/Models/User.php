@@ -84,7 +84,7 @@ class User extends Authenticatable
     protected function getDayDontSmoke(): string
     {
         if ($this->getDataSmokeDBUser()) {
-            $userStatistic = $this->getDataSmokeDBUser()->date_dont_smoke;
+            $userStatistic = $this->getDataSmokeDBUser()->date_finish_smoke;
             return Carbon::now()->diffInDays($userStatistic);
         } else {
             return false;

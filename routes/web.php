@@ -1,11 +1,9 @@
 <?php
 
 use App\Http\Controllers\Image\GetImageController;
-use App\Http\Controllers\Profile\Achieve\ViewAchievementsController;
-use App\Http\Controllers\Profile\Goal\AddGoalController;
+use App\Http\Controllers\Profile\Home\ViewAchievementsController;
+use App\Http\Controllers\Profile\Home\ViewDiaryController;
 use App\Http\Controllers\Profile\Home\ViewHomeController;
-use App\Http\Controllers\Profile\Statistic\AddCigaretteStatisticController;
-use App\Http\Controllers\Profile\Statistic\AddVapeStatisticController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +35,10 @@ Route::get('image/basic_icon', GetImageController::class)->name('image.basic_ico
 
 Route::prefix('profile/achievement')->group(function () {
     Route::get('/', ViewAchievementsController::class)->name('achievement.home');
+});
+
+Route::prefix('profile/diary')->group(function () {
+    Route::get('/', ViewDiaryController::class)->name('diary.home');
 });
 
 Route::middleware('auth')->group(function () {

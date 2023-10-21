@@ -4,6 +4,7 @@ use App\Http\Controllers\API\ProgressController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\GoalController;
+use App\Http\Controllers\API\DiaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,8 @@ Route::prefix('progress')->group(function () {
 
 Route::prefix('profile')->group(function () {
     Route::post('/', [GoalController::class, 'add'])->name('goal.add');
+});
+
+Route::prefix('diary')->group(function () {
+    Route::post('/', [DiaryController::class, 'add'])->name('api.diary.home');
 });
