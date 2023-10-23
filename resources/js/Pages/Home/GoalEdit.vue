@@ -6,17 +6,20 @@ import {ref} from "vue";
 let inputPrice = ref(0);
 let inputName = ref('');
 
-function addGoal() {
+function sendForm() {
+
   axios.post(route('goal.add'), {
     name: inputName.value,
     price: inputPrice.value
-  }).then(() => {
-    window.location.reload()
-  }).catch((err) => {
-    if (err.code === "ERR_BAD_REQUEST") {
-      alert('Отправельные данные не валидны! Пожалуйста, проверьте правильность заполнения')
-    }
   })
+      .then(() => {
+        window.location.reload()
+      })
+      .catch((err) => {
+        if (err.code === "ERR_BAD_REQUEST") {
+          alert('Отправельные данные не валидны! Пожалуйста, проверьте правильность заполнения')
+        }
+      })
 }
 
 </script>
@@ -35,7 +38,7 @@ function addGoal() {
         </div>
       </div>
       <div class="flex justify-end">
-        <button @click="addGoal" class="px-4 py-2 bg-violet-900/80 rounded-lg border-violet-700 border-2 text-white">
+        <button @click="sendForm" class="px-4 py-2 bg-violet-900/80 rounded-lg border-violet-700 border-2 text-white">
           Добавить
         </button>
       </div>

@@ -12,4 +12,5 @@ class Diary extends Model
     use SoftDeletes;
 
     protected $table = 'diary';
+    protected $guarded = false;
 }
