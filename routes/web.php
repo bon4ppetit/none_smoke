@@ -1,14 +1,13 @@
 <?php
 
 use App\Http\Controllers\Image\GetImageController;
-use App\Http\Controllers\Profile\Achieve\ViewAchievementsController;
-use App\Http\Controllers\Profile\Statistic\AddVapeStatisticController;
+use App\Http\Controllers\Profile\Home\ViewAchievementsController;
+use App\Http\Controllers\Profile\Home\ViewDiaryController;
+use App\Http\Controllers\Profile\Home\ViewHomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Profile\Statistic\AddCigaretteStatisticController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\Profile\Home\ViewHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,15 +31,14 @@ Route::get('/', function () {
 
 Route::get('/dashboard', ViewHomeController::class)->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::prefix('profile')->group(function () {
-    Route::post('/statistic/vape', AddVapeStatisticController::class)->name('profile.statistic.add.vape');
-    Route::post('/statistic/add/cigarette', AddCigaretteStatisticController::class)->name('profile.statistic.add.cigarette');
-});
-
 Route::get('image/basic_icon', GetImageController::class)->name('image.basic_icon');
 
 Route::prefix('profile/achievement')->group(function () {
     Route::get('/', ViewAchievementsController::class)->name('achievement.home');
+});
+
+Route::prefix('profile/diary')->group(function () {
+    Route::get('/', ViewDiaryController::class)->name('diary.home');
 });
 
 Route::middleware('auth')->group(function () {
@@ -49,4 +47,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

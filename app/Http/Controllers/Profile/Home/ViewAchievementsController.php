@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Profile\Achieve;
+namespace App\Http\Controllers\Profile\Home;
 
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;

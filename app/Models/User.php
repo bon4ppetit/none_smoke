@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
-use App\Repositories\DataSmokeDBRepository;
+use App\Repositories\SmokeDBRepository;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -45,6 +48,20 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    /**
+     * Get the user's data smoke from database
+     * @return mixed
+     */
+    protected function getDataSmokeDBUser(): mixed
+    {
+        if ($this->getUserTypeSmoke() === 'vape') {
+            return SmokeDBRepository::getDataSmokeDBVapeTypeRepository(auth()->user());
+        } elseif ($this->getUserTypeSmoke() === 'cigarette') {
+            return SmokeDBRepository::getDataSmokeDBCigaretteTypeRepository(auth()->user());
+        } else {
+            return false;
+        }
+    }
 
     /**
      * Get the user's type smoke
@@ -52,24 +69,11 @@ class User extends Authenticatable
      */
     protected function getUserTypeSmoke(): bool|string
     {
-        if (auth()->user()->type_smoke === null)
+        if (auth()->user()->type_smoke === null) {
             return false;
-        else
+        } else {
             return auth()->user()->type_smoke;
-    }
-
-    /**
-     * Get the user's data smoke from database
-     * @return mixed
-     */
-    protected function getDataSmokeDBUser(): mixed
-    {
-        if ($this->getUserTypeSmoke() === 'vape')
-            return DataSmokeDBRepository::getDataSmokeDBVapeTypeRepository(auth()->user());
-        else if ($this->getUserTypeSmoke() === 'cigarette')
-            return DataSmokeDBRepository::getDataSmokeDBCigaretteTypeRepository(auth()->user());
-        else
-            return false;
+        }
     }
 
 
@@ -79,13 +83,12 @@ class User extends Authenticatable
      */
     protected function getDayDontSmoke(): string
     {
-        if ($this->getDataSmokeDBUser())
-        {
-            $userStatistic = $this->getDataSmokeDBUser()->date_dont_smoke;
+        if ($this->getDataSmokeDBUser()) {
+            $userStatistic = $this->getDataSmokeDBUser()->date_finish_smoke;
             return Carbon::now()->diffInDays($userStatistic);
-        }
-        else
+        } else {
             return false;
+        }
     }
 
     /**
@@ -94,13 +97,13 @@ class User extends Authenticatable
      */
     protected function getMoneySaving(): int
     {
-        if ($this->getUserTypeSmoke() === 'vape')
+        if ($this->getUserTypeSmoke() === 'vape') {
             return UserVape::getMoneySavingVape();
-        else if ($this->getUserTypeSmoke() === 'cigarette')
+        } elseif ($this->getUserTypeSmoke() === 'cigarette') {
             return UserCigarette::getMoneySavingCigarette();
-        else
+        } else {
             return false;
-
+        }
     }
 
     /**
@@ -109,12 +112,13 @@ class User extends Authenticatable
      */
     protected function getMoneySpend(): int
     {
-        if ($this->getUserTypeSmoke() === 'vape')
+        if ($this->getUserTypeSmoke() === 'vape') {
             return UserVape::getMoneySpendVape();
-        else if ($this->getUserTypeSmoke() === 'cigarette')
+        } elseif ($this->getUserTypeSmoke() === 'cigarette') {
             return UserCigarette::getMoneySpendCigarette();
-        else
+        } else {
             return false;
+        }
     }
 
     /**
@@ -123,18 +127,32 @@ class User extends Authenticatable
      */
     protected function getBasicInfoSmoke(): array|bool
     {
-        if ($this->getUserTypeSmoke())
-        {
+        if ($this->getUserTypeSmoke()) {
             return [
-                'money_spend' =>  $this->getMoneySpend(),
+                'money_spend' => $this->getMoneySpend(),
                 'money_saving' => $this->getMoneySaving(),
                 'day_dont_smoke' => $this->getDayDontSmoke()
             ];
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
+    /**
+     * Model Method: Reset User's Progress
+     *
+     * @return string[]
+     */
+    protected function resetProgress(): array
+    {
+        try {
+            DB::table('user_type_' . $this->getUserTypeSmoke())
+                ->where('user_id', auth()->user()->id)
+                ->update(['date_dont_smoke' => Carbon::now()]);
+
+            return ['status' => 'success', 'message' => 'Progress reset successfully.'];
+        } catch (\Exception $e) {
+            return ['status' => 'error', 'message' => "Progress don't reset successfully. Error: {$e->getMessage()}"];
+        }
+    }
 }

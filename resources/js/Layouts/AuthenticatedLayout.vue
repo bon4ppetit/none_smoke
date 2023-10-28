@@ -32,8 +32,11 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Главная
                                 </NavLink>
+                                <NavLink :href="route('diary.home')" :active="route().current('diary.home')">
+                                    Дневник
+                                </NavLink>
                                 <NavLink :href="route('achievement.home')" :active="route().current('achievement.home')">
-                                    Достижения
+                                  Достижения
                                 </NavLink>
                             </div>
                         </div>

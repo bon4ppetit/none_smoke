@@ -83,7 +83,7 @@ defineProps({
                                 <div
                                     class="h-16 w-16 p-3 bg-red-50 dark:bg-purple-700/20 flex items-center justify-center rounded-full"
                                 >
-                                    <Image path="storage/image/welcome_1.png" text-alt="Img Welcome 1"></Image>
+                                    <Image path="storage/welcome_1.png" text-alt="Img Welcome 1"></Image>
                                 </div>
                             </div>
                             <p class="mt-8 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
@@ -103,7 +103,7 @@ defineProps({
                                 <div
                                 class="h-16 w-16 bg-red-50 dark:bg-purple-700/20 flex items-center justify-center rounded-full"
                             >
-                                <Image path="storage/image/welcome_2.png" text-alt="Img Welcome 1"></Image>
+                                <Image path="storage/welcome_2.png" text-alt="Img Welcome 1"></Image>
                             </div>
                             </div>
                             <p class="mt-8 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">

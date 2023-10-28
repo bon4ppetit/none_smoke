@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('user_type_cigarette', function (Blueprint $table) {
-            $table->timestamp('date_dont_smoke')->after('user_id')->useCurrent();
+        Schema::create('diary', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->text('text');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('user_type_cigarette', function (Blueprint $table) {
-            $table->dropColumn('date_dont_smoke');
-        });
+        //
     }
 };

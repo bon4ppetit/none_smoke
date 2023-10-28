@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('user_type_vape', function (Blueprint $table) {
             $table->id();
-            $table->integer('how_long_smoke');
             $table->integer('price_jar');
             $table->integer('count_jar_a_month');
             $table->integer('price_vape_vaporizer');
             $table->integer('count_vape_vaporizer_a_month');
+            $table->date('date_start_smoke');
+            $table->date('date_finish_smoke');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

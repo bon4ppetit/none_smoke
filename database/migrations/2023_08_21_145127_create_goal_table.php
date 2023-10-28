@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('type_smoke', 20)->after('remember_token')->nullable();
+        Schema::create('goal', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->string('name', 40);
+            $table->integer('price');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('type_smoke');
-        });
+        Schema::dropIfExists('goal');
     }
 };

@@ -8,7 +8,7 @@
 
 <template>
     <div class="p-6 text-gray-900 dark:text-gray-100">
-        <h3 class="mb-5 text-2xl text-">Для начала заполним формы</h3>
+        <h3 class="mb-5 text-2xl text-">Для начала заполним форму</h3>
         <div class="mb-4" v-if="typeForm === 0">
             <h4 class="text-lg mb-4">
                 Какого типа сигарет вы курили?
@@ -23,10 +23,10 @@
             </div>
         </div>
         <div v-if="typeForm === 1">
-            <FormQuestionVape></FormQuestionVape>
+            <FormQuestionVape :type_smoke=typeForm></FormQuestionVape>
         </div>
         <div v-if="typeForm === 2">
-            <FormQuestionCigarette></FormQuestionCigarette>
+            <FormQuestionCigarette :type_smoke=typeForm></FormQuestionCigarette>
         </div>
     </div>
 </template>

@@ -1,21 +1,25 @@
 <script setup>
     import {ref} from "vue";
 
-    let time = ref();
+    let date_start_smoke = ref();
+    let date_end_smoke = ref();
     let pricePack = ref();
     let countCigInPack = ref();
     let countSmokeInDay = ref();
     let nicotine = ref();
 
     function sendData() {
-        axios.post(route('profile.statistic.add.cigarette'), {
-            how_long_smoke: time.value,
+        axios.post(route('profile.statistic.store'), {
+            type_smoke: 'cigarette',
+            date_start_smoke: date_start_smoke.value,
+            date_finish_smoke: date_end_smoke.value,
             money_on_pack_cigarette: pricePack.value,
             count_cigarettes_in_pack: countCigInPack.value,
             count_smoke_cigarettes_a_day: countSmokeInDay.value,
             nicotine_in_cigarette: nicotine.value,
         })
-        .then(() => {
+        .then((res) => {
+          // console.log(res.data)
             window.location.reload()
         })
         .catch((error) => {
@@ -29,15 +33,18 @@
 <template>
     <div class="m-auto flex justify-center items-center">
         <div class="max-w-6xl flex-auto grid grid-cols-3 justify-center">
-            <div class="m-3 flex flex-col justify-center">
-                <div class="mb-3">Как долго вы курили?</div>
-                <div class="">
-                    <input class="bg-gray-700 rounded p-3" type="number" v-model="time">
-                    <span class="ml-2">
-                        мес
-                    </span>
-                </div>
+          <div class="m-3 flex flex-col justify-center">
+            <div class="mb-3">Когда вы начали курить?</div>
+            <div class="">
+              <input v-model="date_start_smoke" class="bg-gray-700 rounded p-3" type="date">
             </div>
+          </div>
+          <div class="m-3 flex flex-col justify-center">
+            <div class="mb-3">Когда вы решили бросить курить?</div>
+            <div class="">
+              <input  v-model="date_end_smoke" class="bg-gray-700 rounded p-3" type="date">
+            </div>
+          </div>
             <div class="m-3 flex flex-col justify-center">
                 <div class="mb-3">Сколько стоила упаковка сигарет?</div>
                 <div class="">
