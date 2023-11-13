@@ -23,7 +23,8 @@ class DiaryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'text' => 'string'
+            'text' => 'string',
+            'wish_vape' => 'integer',
         ];
     }
 }

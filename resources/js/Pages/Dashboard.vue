@@ -2,17 +2,20 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import FormQuestion from "@/Pages/Home/FormQuestion.vue";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import StructurePanel from "@/Pages/Home/StructurePanel.vue";
 import GoalPanel from "@/Pages/Home/GoalPanel.vue";
 import DiaryPanel from "@/Pages/Diary/DiaryPanel.vue";
 
 const props = defineProps([
     'basicInfoSmoke',
-    'goalsUser'
+    'lastDiaryRecord',
+    'goalsUser',
 ]);
 
 let viewForms = props.basicInfoSmoke !== false ? ref(false) : ref(true);
+let viewFormAddRecordDiary = props.lastDiaryRecord.daysFromAddedRecord > 3 || props.lastDiaryRecord.daysFromAddedRecord === null ? ref(true) : ref(false);
+
 </script>
 
 <template>
@@ -29,7 +32,7 @@ let viewForms = props.basicInfoSmoke !== false ? ref(false) : ref(true);
                     <FormQuestion v-if="viewForms === true" :viewForms="viewForms"></FormQuestion>
                     <StructurePanel v-else-if="viewForms === false" :basicInfoSmoke="basicInfoSmoke"></StructurePanel>
                 </div>
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-8 p-5" v-if="viewForms === false">
+                <div v-if="viewFormAddRecordDiary === true" class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-8 p-5">
                   <DiaryPanel></DiaryPanel>
                 </div>
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-8" v-if="viewForms === false">

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\SmokeDBRepository;
-use App\Repositories\Interfaces\DataSmokeDBRepositoryInterface;
+use App\Repositories\SmokeRepository;
+use App\Repositories\Interfaces\SmokeRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -14,8 +14,8 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-            DataSmokeDBRepositoryInterface::class,
-            SmokeDBRepository::class
+            SmokeRepositoryInterface::class,
+            SmokeRepository::class
         );
     }
 

@@ -19,7 +19,6 @@
             nicotine_in_cigarette: nicotine.value,
         })
         .then((res) => {
-          // console.log(res.data)
             window.location.reload()
         })
         .catch((error) => {

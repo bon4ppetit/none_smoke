@@ -4,9 +4,9 @@ namespace App\Repositories;
 
 use App\Models\UserCigarette;
 use App\Models\UserVape;
-use App\Repositories\Interfaces\DataSmokeDBRepositoryInterface;
+use App\Repositories\Interfaces\SmokeRepositoryInterface;
 
-class SmokeDBRepository implements DataSmokeDBRepositoryInterface
+class SmokeRepository implements SmokeRepositoryInterface
 {
 
     public static function getDataSmokeDBVapeTypeRepository()

@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces;
 
-interface DataSmokeDBRepositoryInterface
+interface SmokeRepositoryInterface
 {
     public static function getDataSmokeDBVapeTypeRepository();
 
