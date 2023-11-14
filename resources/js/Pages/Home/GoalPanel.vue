@@ -6,16 +6,19 @@
 
   const viewStringNoneGoal = props.goalsUser === false;
   const viewGoalEdit = ref(false);
+  let goalIsSucceed = ref(false);
 
   function getWidthForGoal(price, goal) {
     let percent = Math.floor(price / goal * 100);
+    goalIsSucceed.value = false;
 
-    if (percent >= 100)
+    if (percent >= 100) {
       percent = 100;
-    else if (percent <= 0)
+      goalIsSucceed.value = true;
+    }
+    else if (percent <= 0) {
       percent = 0.5
-
-    console.log(percent);
+    }
 
     return 'width: ' + percent + "%"
   }
@@ -47,7 +50,8 @@
               </div>
             </div>
             <div :style="getWidthForGoal(basicInfoSmoke['money_saving'], item.price)">
-              <div class="mt-1 h-1 rounded-md bg-gradient-to-r from-indigo-800 to-indigo-400"></div>
+              <div v-if="goalIsSucceed === false" class="mt-1 h-1 rounded-md bg-gradient-to-r from-indigo-800 to-indigo-400"></div>
+              <div v-else class="mt-1 h-1 rounded-md bg-gradient-to-r from-green-900 to-green-400"></div>
             </div>
           </div>
         </div>

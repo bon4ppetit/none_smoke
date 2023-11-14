@@ -8,6 +8,25 @@ const props = defineProps([
   'masks',
 ])
 
+function getClassWishVape(status) {
+  switch (status) {
+    case 5:
+      return "w-40 h-48 cursor-pointer flex flex-col bg-green-700/40 rounded-lg mr-12 border-green-700 border-2 p-4";
+
+    case 4:
+      return "w-40 h-48 p-4 cursor-pointer flex flex-col bg-amber-400/40 rounded-lg mr-12 border-amber-400 border-2";
+
+    case 3:
+      return "w-40 h-48 p-4 cursor-pointer flex flex-col bg-orange-700/40 rounded-lg mr-12 border-orange-700 border-2";
+
+    case 2:
+      return "w-40 h-48 p-4 cursor-pointer flex flex-col bg-purple-700/40 rounded-lg mr-12 border-purple-700 border-2";
+
+    case 1:
+      return "w-40 h-48 p-4 cursor-pointer flex flex-col bg-red-700/40 rounded-lg mr-12 border-red-700 border-2";
+  }
+}
+
 </script>
 
 <template>
@@ -36,52 +55,16 @@ const props = defineProps([
 
         <div class="flex p-10 px-5">
           <div v-for="mask in masks">
-            <div v-if="mask.wish_vape === 5" class="w-40 h-48 bg-green-700/40 rounded-lg mr-12 border-green-700 border-2 p-4">
+            <div :class="getClassWishVape(mask.wish_vape['status'])">
               <div class="text-xs text-center">
                 {{ mask.created_at }}
               </div>
-              <p class="text-sm text-center mt-3">
-                Сдержался
-                на легке
+              <p class="flex-auto text-sm text-center mt-3">
+                {{ mask.wish_vape['wishVapeText'] }}
               </p>
-            </div>
-            <div v-else-if="mask.wish_vape === 4" class="w-40 h-48 p-4 bg-amber-400/40 rounded-lg mr-12 border-amber-400 border-2">
-              <div class="text-xs text-center">
-                {{ mask.created_at }}
+              <div class="text-end">
+                <Image path="storage/ico/arrow-right.svg" text-alt="Img Arrow"></Image>
               </div>
-              <p class="text-sm text-center mt-3">
-                Сдержался,
-                было пару мыслей
-              </p>
-            </div>
-            <div v-else-if="mask.wish_vape === 3" class="w-40 h-48 p-4 bg-orange-700/40 rounded-lg mr-12 border-orange-700 border-2">
-              <div class="text-xs text-center">
-                {{ mask.created_at }}
-              </div>
-              <p class="text-sm text-center mt-3">
-                Сдержался, но
-                много думал
-                об этом
-              </p>
-            </div>
-            <div v-else-if="mask.wish_vape === 2" class="w-40 h-48 p-4 bg-purple-700/40 rounded-lg mr-12 border-purple-700 border-2">
-              <div class="text-xs text-center">
-                {{ mask.created_at }}
-              </div>
-              <p class="text-sm text-center mt-3">
-                Было тяжело
-                и мучительно, но
-                сдержался
-              </p>
-            </div>
-            <div v-else-if="mask.wish_vape === 1" class="w-40 h-48 p-4 bg-red-700/40 rounded-lg mr-12 border-red-700 border-2">
-              <div class="text-xs text-center">
-                {{ mask.created_at }}
-              </div>
-              <p class="text-sm text-center mt-3">
-                Не получилось
-                сдержаться
-              </p>
             </div>
           </div>
         </div>

@@ -2,7 +2,6 @@
   import {ref} from "vue";
 
   let inputData = ref('');
-  let is_wish_vape = '0';
   let wish_vape = 0;
 
   function sendForm() {
