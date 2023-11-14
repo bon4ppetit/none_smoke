@@ -34,13 +34,16 @@
           <span class="text-zinc-400 text-center text-sm" v-if="viewStringNoneGoal">
             У вас ещё нету цели для накопления. <br>Советуем поставьте её, чтобы накопленные деньги потратились не даром.
           </span>
-          <div v-else class="mb-4" v-for="item in goalsUser">
+          <div v-else class="m-4 block p-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" v-for="item in goalsUser">
             <div class="max-w-4xl  text-white flex justify-between">
-              <div>
+              <div class="mb-2">
                 {{ item.name }}
               </div>
               <div>
-                {{ item.price }}руб.
+                Цель:
+                <span class="text-stone-400">
+                  {{ item.price }}руб.
+                </span>
               </div>
             </div>
             <div :style="getWidthForGoal(basicInfoSmoke['money_saving'], item.price)">
@@ -48,13 +51,13 @@
             </div>
           </div>
         </div>
-        <div class="text-white flex-auto flex items-center justify-center">
+        <div class="text-white pt-12 mt-4">
           <button v-on:click="viewGoalEdit = true" v-if="!viewGoalEdit" class="px-4 py-2 bg-violet-900/80 rounded-lg border-violet-700 border-2">
             Поставить цель
           </button>
         </div>
     </div>
-    <GoalEdit v-if="viewGoalEdit"></GoalEdit>
+    <GoalEdit :viewGoalEdit="viewGoalEdit" v-if="viewGoalEdit"></GoalEdit>
   </div>
 </template>
 

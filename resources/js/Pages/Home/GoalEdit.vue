@@ -3,6 +3,10 @@
 import InputLabel from "@/Components/InputLabel.vue";
 import {ref} from "vue";
 
+const props = defineProps([
+    'viewGoalEdit'
+])
+
 let inputPrice = ref(0);
 let inputName = ref('');
 
@@ -22,6 +26,10 @@ function sendForm() {
       })
 }
 
+function cancelSending() {
+  // props.viewGoalEdit = false;
+}
+
 </script>
 
 <template>
@@ -38,7 +46,10 @@ function sendForm() {
         </div>
       </div>
       <div class="flex justify-end">
-        <button @click="sendForm" class="px-4 py-2 bg-violet-900/80 rounded-lg border-violet-700 border-2 text-white">
+        <button @click="cancelSending" class="px-4 py-2 bg-violet-700/80 rounded-lg border-violet-700 border-2 text-white">
+          Отменить
+        </button>
+        <button @click="sendForm" class="px-4 py-2 bg-violet-700/80 rounded-lg border-violet-700 border-2 text-white">
           Добавить
         </button>
       </div>

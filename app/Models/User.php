@@ -144,11 +144,17 @@ class User extends Authenticatable
             return [
                 'money_spend' => self::getMoneySpend(),
                 'money_saving' => self::getMoneySaving(),
-                'day_dont_smoke' => self::getDayDontSmoke()
+                'day_dont_smoke' => self::getDayDontSmoke(),
+                'count_cigarette_dont_smoke' => self::getCountCigaretteDontSmoke()
             ];
         } else {
             return false;
         }
+    }
+
+    protected static function getCountCigaretteDontSmoke(): int
+    {
+        return 41;
     }
 
     /**
@@ -161,7 +167,7 @@ class User extends Authenticatable
         try {
             DB::table('user_type_' . self::getUserTypeSmoke())
                 ->where('user_id', auth()->user()->id)
-                ->update(['date_dont_smoke' => Carbon::now()]);
+                ->update(['date_finish_smoke' => Carbon::now()->toDateString()]);
 
             return ['status' => 'success', 'message' => 'Progress reset successfully.'];
         } catch (Exception $e) {

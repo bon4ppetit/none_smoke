@@ -21,7 +21,7 @@ class DiaryController extends Controller
         $this->service = $service;
     }
 
-    public function add(DiaryRequest $request)
+    public function add(DiaryRequest | array $request)
     {
         $result = $this->service->addDiary($request->validated());
 
