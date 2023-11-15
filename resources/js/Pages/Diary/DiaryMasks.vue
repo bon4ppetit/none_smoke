@@ -1,30 +1,54 @@
 <script setup>
 import Image from "@/Components/Image.vue";
 import {TailwindPagination} from "laravel-vue-pagination";
-import {data} from "autoprefixer";
 
 
 const props = defineProps([
   'masks',
 ])
 
+let displayMaskText = false;
+
 function getClassWishVape(status) {
   switch (status) {
     case 5:
-      return "w-40 h-48 cursor-pointer flex flex-col bg-green-700/40 rounded-lg mr-12 border-green-700 border-2 p-4";
+      return ["border-green-700/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-400 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-green-700/40 rounded-lg mr-12 border-green-700 border-2 transition-all duration-200 ease-out"];
 
     case 4:
-      return "w-40 h-48 p-4 cursor-pointer flex flex-col bg-amber-400/40 rounded-lg mr-12 border-amber-400 border-2";
+      return ["border-amber-400/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-400 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-amber-400/40 rounded-lg mr-12 border-amber-400 border-2 transition-all duration-200 ease-out"];
 
     case 3:
-      return "w-40 h-48 p-4 cursor-pointer flex flex-col bg-orange-700/40 rounded-lg mr-12 border-orange-700 border-2";
+      return ["border-orange-700/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-400 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-orange-700/40 rounded-lg mr-12 border-orange-700 border-2 transition-all duration-200 ease-out"];
 
     case 2:
-      return "w-40 h-48 p-4 cursor-pointer flex flex-col bg-purple-700/40 rounded-lg mr-12 border-purple-700 border-2";
+      return ["border-purple-700/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-400 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-purple-700/40 rounded-lg mr-12 border-purple-700 border-2 transition-all duration-200 ease-out"];
 
     case 1:
-      return "w-40 h-48 p-4 cursor-pointer flex flex-col bg-red-700/40 rounded-lg mr-12 border-red-700 border-2";
+      return ["border-red-700/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-400 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-red-700/40 rounded-lg mr-12 border-red-700 border-2 transition-all duration-200 ease-out"];
   }
+}
+
+
+/*
+* Display text in div masks
+* */
+function viewText(key) {
+  let list = document.getElementsByClassName('w-80');
+  let div = document.getElementById(key);
+  let textMask = div.getElementsByClassName('text-mask')[0]
+
+  for(let item of list) {
+    item.classList.replace('w-80', 'w-40')
+    item.getElementsByClassName('text-mask')[0].classList.add('hidden');
+
+    item.lastChild.childNodes[0].classList.remove('rotate-180')
+  }
+
+  div.classList.add('w-80');
+  textMask.classList.remove('hidden');
+
+  //Animated Arrow Image
+  div.lastChild.childNodes[0].classList.add('rotate-180')
 }
 
 </script>
@@ -54,16 +78,19 @@ function getClassWishVape(status) {
         </div>
 
         <div class="flex p-10 px-5">
-          <div v-for="mask in masks">
-            <div :class="getClassWishVape(mask.wish_vape['status'])">
-              <div class="text-xs text-center">
+          <div v-for="(mask, idx) in masks">
+            <div v-on:click="viewText(idx)" :id="idx" :class="getClassWishVape(mask.wish_vape['status'])[1]">
+              <div class="text-xs text-center p-4">
                 {{ mask.created_at }}
               </div>
               <p class="flex-auto text-sm text-center mt-3">
                 {{ mask.wish_vape['wishVapeText'] }}
               </p>
-              <div class="text-end">
-                <Image path="storage/ico/arrow-right.svg" text-alt="Img Arrow"></Image>
+              <p class="text-mask flex-auto text-sm text-center mt-3 hidden">
+                {{mask.text}}
+              </p>
+              <div class="flex justify-end">
+                <Image path="storage/ico/arrow-right.svg" :class="getClassWishVape(mask.wish_vape['status'])[0]" text-alt="Img Arrow"></Image>
               </div>
             </div>
           </div>
