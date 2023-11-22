@@ -7,6 +7,7 @@ use App\Http\Requests\DiaryRequest;
 use App\Models\Diary;
 use App\Repositories\DiaryRepository;
 use App\Services\DiaryService;
+use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 
 /**
@@ -21,7 +22,7 @@ class DiaryController extends Controller
         $this->service = $service;
     }
 
-    public function add(DiaryRequest | array $request)
+    public function add(DiaryRequest $request)
     {
         $result = $this->service->addDiary($request->validated());
 

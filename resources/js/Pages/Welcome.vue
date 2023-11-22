@@ -20,6 +20,7 @@ defineProps({
     },
 });
 
+
 </script>
 
 <template>
@@ -81,14 +82,13 @@ defineProps({
                                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Отслеживай свой прогресс</h2>
 
                                 <div
-                                    class="h-16 w-16 p-3 bg-red-50 dark:bg-purple-700/20 flex items-center justify-center rounded-full"
+                                    class="h-20 w-20 p-1 bg-red-50 dark:bg-purple-700/20 flex items-center justify-center rounded-full"
                                 >
                                     <Image path="storage/welcome_1.png" text-alt="Img Welcome 1"></Image>
                                 </div>
                             </div>
-                            <p class="mt-8 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                Благодаря удобным диаграммам и простой статистики ты можешь отслеживать свой прогресс, ставить перед собой задачи и цели, достигая их
-                                ты будешь всё ближе к свободе от вредной привычке
+                            <p class="mt-5 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                                Благодаря удобным диаграммам и простой статистики, вы можете отслеживать свой прогресс, следить за нормами, а наши алгоритмы подскажут возможные риски ломки
                             </p>
                         </div>
                     </div>
@@ -101,14 +101,14 @@ defineProps({
                                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Веди личный дневник</h2>
 
                                 <div
-                                class="h-16 w-16 bg-red-50 dark:bg-purple-700/20 flex items-center justify-center rounded-full"
+                                class="h-20 w-20 bg-red-50 dark:bg-purple-700/20 flex items-center justify-center rounded-full"
                             >
                                 <Image path="storage/welcome_2.png" text-alt="Img Welcome 1"></Image>
                             </div>
                             </div>
                             <p class="mt-8 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                В процессе бросания курения важно получать новые и позитивные впечатления от жизни. Запиши себе в дневник эти яркие моменты, чтобы в момент
-                                трудностей напомнить себе что и без курения жизнь великолепна
+                                В дневнике вы можете оставлять записи о причине курения, поводов бросить и начать курить, так же вести записи своего самочувствия.
+                                Ведя такие записи, оставить вредную привычку в прошлом проще!
                             </p>
                         </div>
                     </div>
@@ -118,7 +118,7 @@ defineProps({
                     >
                         <div>
                             <div class="flex justify-between">
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Отслеживай свой прогресс</h2>
+                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Получай достижения</h2>
 
                                 <div
                                     class="h-16 w-16 p-3 bg-red-50 dark:bg-purple-700/20 flex items-center justify-center rounded-full"
@@ -127,8 +127,7 @@ defineProps({
                                 </div>
                             </div>
                             <p class="mt-8 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                Благодаря удобным диаграммам и простой статистики ты можешь отслеживать свой прогресс, ставить перед собой задачи и цели, достигая их
-                                ты будешь всё ближе к свободе от вредной привычке
+                              За дни вашего воздержания вы будете получать достижения и сможете открывать новые возможности приложения (например, рамку для иконки аватара, разновидности отчетов, виды дизайна приложения и прочее)
                             </p>
                         </div>
                     </div>
@@ -153,9 +152,16 @@ defineProps({
                         </div>
                     </div>
                 </div>
+              <div class="mt-16 flex justify-center">
+                  <Link :href="route('dashboard')"
+                  class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                  >
+                    Приступить
+                  </Link>
+              </div>
             </div>
         </div>
-    </div>
+      </div>
 </template>
 
 <style>

@@ -30,7 +30,7 @@
         <div class="max-w-4xl flex-auto">
           <h2 class="text-white font-bold text-2xl flex">
             Ваша копилка:
-            <span class="font-bold text-violet-700 block ml-3">
+            <span class="font-bold text-gray-400 block ml-3">
               {{basicInfoSmoke['money_saving']}}руб.
             </span>
           </h2>

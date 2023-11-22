@@ -12,19 +12,19 @@ let displayMaskText = false;
 function getClassWishVape(status) {
   switch (status) {
     case 5:
-      return ["border-green-700/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-400 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-green-700/40 rounded-lg mr-12 border-green-700 border-2 transition-all duration-200 ease-out"];
+      return ["border-green-700/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-700 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-green-700/40 rounded-lg mr-12 border-green-700 border-2 transition-all duration-200 ease-out"];
 
     case 4:
-      return ["border-amber-400/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-400 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-amber-400/40 rounded-lg mr-12 border-amber-400 border-2 transition-all duration-200 ease-out"];
+      return ["border-amber-400/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-700 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-amber-400/40 rounded-lg mr-12 border-amber-400 border-2 transition-all duration-200 ease-out"];
 
     case 3:
-      return ["border-orange-700/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-400 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-orange-700/40 rounded-lg mr-12 border-orange-700 border-2 transition-all duration-200 ease-out"];
+      return ["border-orange-700/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-700 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-orange-700/40 rounded-lg mr-12 border-orange-700 border-2 transition-all duration-200 ease-out"];
 
     case 2:
-      return ["border-purple-700/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-400 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-purple-700/40 rounded-lg mr-12 border-purple-700 border-2 transition-all duration-200 ease-out"];
+      return ["border-purple-700/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-700 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-purple-700/40 rounded-lg mr-12 border-purple-700 border-2 transition-all duration-200 ease-out"];
 
     case 1:
-      return ["border-red-700/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-400 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-red-700/40 rounded-lg mr-12 border-red-700 border-2 transition-all duration-200 ease-out"];
+      return ["border-red-700/40 p-4 border-t-2 border-l-2 rounded-l-lg transition-all duration-700 ease-out", "w-40 h-48 cursor-pointer flex flex-col bg-red-700/40 rounded-lg mr-12 border-red-700 border-2 transition-all duration-200 ease-out"];
   }
 }
 
@@ -41,14 +41,14 @@ function viewText(key) {
     item.classList.replace('w-80', 'w-40')
     item.getElementsByClassName('text-mask')[0].classList.add('hidden');
 
-    item.lastChild.childNodes[0].classList.remove('rotate-180')
+    item.lastChild.childNodes[0].classList.remove('rotate_arrow')
   }
 
   div.classList.add('w-80');
   textMask.classList.remove('hidden');
 
   //Animated Arrow Image
-  div.lastChild.childNodes[0].classList.add('rotate-180')
+  div.lastChild.childNodes[0].classList.add('rotate_arrow')
 }
 
 </script>
@@ -103,5 +103,8 @@ function viewText(key) {
 </template>
 
 <style scoped>
-
+  .rotate_arrow {
+    transform: rotate(180deg);
+    border: none;
+  }
 </style>
