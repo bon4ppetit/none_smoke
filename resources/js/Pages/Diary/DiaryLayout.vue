@@ -1,7 +1,12 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import Modal from "@/Components/Modal.vue";
+import DiaryMasks from "@/Pages/Diary/DiaryMasks.vue";
+
+const props = defineProps([
+    'masks',
+])
+
 </script>
 
 <template>
@@ -12,6 +17,9 @@ import Modal from "@/Components/Modal.vue";
         Дневник
       </h2>
     </template>
+    <div class="py-12 text-white">
+      <DiaryMasks :masks="masks"></DiaryMasks>
+    </div>
   </AuthenticatedLayout>
 </template>
 

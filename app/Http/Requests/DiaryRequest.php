@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Validator;
 
 class DiaryRequest extends FormRequest
 {
@@ -23,7 +24,8 @@ class DiaryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'text' => 'string'
+            'text' => 'string',
+            'wish_vape' => 'integer',
         ];
     }
 }

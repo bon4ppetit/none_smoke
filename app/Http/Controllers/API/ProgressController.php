@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Statistic\StoreProfileRequest;
 use App\Models\User;
+use App\Services\DiaryService;
 use App\Services\Statistic\StatisticService;
 use Illuminate\Http\JsonResponse;
 
@@ -50,6 +51,12 @@ class ProgressController extends Controller
      */
     public function destroy(): JsonResponse
     {
+        $diary = new DiaryService();
+        $diary->addDiary([
+            'wish_vape' => 1,
+            'text' => 'Вы закурили и не сдержались'
+        ]);
+
         return response()->json(User::resetProgress());
     }
 }

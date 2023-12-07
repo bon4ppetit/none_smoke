@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Repositories\GoalDBRepository;
+use App\Repositories\GoalRepository;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -17,7 +17,7 @@ class Goal extends Model
 
         protected function getGoal()
         {
-            $data = GoalDBRepository::getUserAllGoalsDBRepository();
+            $data = GoalRepository::getAllGoalsRepository();
             if (count($data) === 0)
                 return false;
             else
