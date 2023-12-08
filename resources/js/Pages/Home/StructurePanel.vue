@@ -1,21 +1,21 @@
 <script setup>
 
-  const props = defineProps([
-    'basicInfoSmoke',
-  ]);
+import {ref} from "vue";
+import Modal from "@/Components/Modal.vue";
+import DestroyProgress from "@/Pages/Home/DestroyProgress.vue";
 
-function destroyProgress() {
-  axios.delete(route('progress.destroy'))
-      .then((resp) => {
-        if (resp.data['status'] === 'success')
-          window.location.reload();
-        else if (resp.data['status'] === 'error')
-          console.log(resp.data)
-      })
-      .catch((err) => {
-        console.log(err.data)
-      })
+const props = defineProps([
+  'basicInfoSmoke',
+]);
+
+let viewModal = ref(false)
+
+function closeModal() {
+  viewModal.value = false
 }
+
+
+
 </script>
 
 <template>
@@ -42,7 +42,7 @@ function destroyProgress() {
         </div>
       </div>
       <div class="flex flex-col justify-center items-center mb-4">
-        <button @click="destroyProgress"
+        <button @click="viewModal = true"
                 class="text-red-500 bg-red-900/80 px-3 py-2 rounded-lg border-2 border-red-600">
           Сбросить
           <br>
@@ -59,6 +59,9 @@ function destroyProgress() {
           </p>
         </div>
       </div>
+      <Modal :show="viewModal" v-on:close="closeModal">
+        <DestroyProgress></DestroyProgress>
+      </Modal>
     </div>
   </div>
 </template>

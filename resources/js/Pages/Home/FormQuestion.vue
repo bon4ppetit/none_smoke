@@ -14,10 +14,10 @@
                 Какого типа сигарет вы курили?
             </h4>
             <div class="max-w-xl flex justify-between m-auto">
-                <div @click="typeForm = 1" class="py-6 px-16 bg-gray-600 rounded-lg cursor-pointer duration-300 hover:scale-105">
+                <div @click="typeForm = 1" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-12 cursor-pointer py-6 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
                     Электронные
                 </div>
-                <div @click="typeForm = 2" class="py-6 px-16 bg-gray-600 rounded-lg cursor-pointer duration-300 hover:scale-105">
+                <div @click="typeForm = 2" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-12 cursor-pointer py-6 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
                     Табачные
                 </div>
             </div>

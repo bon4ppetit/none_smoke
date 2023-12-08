@@ -12,4 +12,9 @@ class GoalService
 
         return Goal::create($data);
     }
+
+    public function destroyGoal($id)
+    {
+        return Goal::destroy($id);
+    }
 }

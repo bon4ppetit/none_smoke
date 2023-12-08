@@ -28,11 +28,13 @@ Route::prefix('progress')->group(function () {
 });
 
 Route::prefix('profile')->group(function () {
-    Route::post('/', [GoalController::class, 'add'])->name('goal.add');
+    Route::post('goal', [GoalController::class, 'add'])->name('goal.add');
+    Route::post('goal', [GoalController::class, 'destroy'])->name('goal.destroy');
 });
 
 Route::prefix('diary')->group(function () {
     Route::post('/', [DiaryController::class, 'add'])->name('api.diary.add');
     Route::get('/', [DiaryController::class, 'getMasks'])->name('api.diary.masks.get');
 });
+
 
