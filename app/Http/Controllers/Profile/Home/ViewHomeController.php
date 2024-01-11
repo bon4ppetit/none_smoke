@@ -8,9 +8,16 @@ use App\Models\Diary;
 use App\Models\Goal;
 use App\Models\User;
 use Inertia\Inertia;
+use Inertia\Response;
 
+/**
+ * Render home page
+ */
 class ViewHomeController extends Controller
 {
+    /**
+     * @return Response
+     */
     public function __invoke()
     {
         return Inertia::render('Dashboard', [

@@ -12,6 +12,10 @@ use App\Models\Image;
  */
 class GetImageController extends Controller
 {
+    /**
+     * @param GetImageRequest $request
+     * @return string
+     */
     public function __invoke(GetImageRequest $request)
     {
         return Image::getImage($request->validated('path'));

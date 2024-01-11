@@ -3,17 +3,17 @@
 namespace App\Repositories;
 
 use App\Models\Diary;
+use Illuminate\Support\Facades\DB;
 use App\Repositories\Interfaces\DiaryRepositoryInterface;
 
 class DiaryRepository implements DiaryRepositoryInterface
 {
-    public static function getAllUserMasks(): array
+    public static function getAllUserMasks(): \Illuminate\Support\Collection
     {
-        $masks = \DB::table('diary')->select(['wish_vape', 'text', 'user_id', 'created_at'])
+        $masks = DB::table('diary')->select(['id', 'wish_vape', 'text', 'user_id', 'created_at'])
             ->where('user_id', auth()->user()->id)
             ->orderByDesc('created_at')
-            ->get()
-            ->toArray();
+            ->get();
 
         $wishVapeStatusTextList = [
             1 => 'Не получилось сдержаться',

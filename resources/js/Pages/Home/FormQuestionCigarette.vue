@@ -30,15 +30,15 @@
 </script>
 
 <template>
-    <div class="m-auto flex justify-center items-center">
-        <div class="max-w-6xl flex-auto grid grid-cols-3 justify-center">
-          <div class="m-3 flex flex-col justify-center">
+    <div class="m-auto flex justify-center items-center flex-col">
+        <div class="form_type_2 max-w-6xl flex-auto grid grid-cols-3 justify-center">
+            <div class="m-3 flex flex-col justify-center">
             <div class="mb-3">Когда вы начали курить?</div>
             <div class="">
               <input v-model="date_start_smoke" class="bg-gray-700 rounded p-3" type="date">
             </div>
           </div>
-          <div class="m-3 flex flex-col justify-center">
+            <div class="m-3 flex flex-col justify-center">
             <div class="mb-3">Когда вы решили бросить курить?</div>
             <div class="">
               <input  v-model="date_end_smoke" class="bg-gray-700 rounded p-3" type="date">
@@ -80,11 +80,30 @@
                     </span>
                 </div>
             </div>
-            <div class="m-3 mt-8">
-                <button @click.prevent="sendData" type="submit" class="px-12 py-4 min-h-min bg-violet-800 rounded-lg">
-                    Отправить
-                </button>
-            </div>
+        </div>
+        <div class="m-3 mt-8">
+          <button @click.prevent="sendData" type="submit" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+            Отправить
+          </button>
         </div>
     </div>
 </template>
+
+<style>
+@media (max-width: 970px) {
+    .form_type_2 {
+      grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 670px) {
+  .form_type_2 {
+    grid-template-columns: 1fr;
+  }
+  .form_type_2 {
+    width: 80%;
+  }
+  .form_type_2 input {
+    width: 80%;
+  }
+}
+</style>

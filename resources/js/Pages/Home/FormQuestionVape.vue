@@ -30,8 +30,8 @@
 </script>
 
 <template>
-    <div class="m-auto flex justify-center items-center">
-        <div class="max-w-6xl flex-auto grid grid-cols-3 justify-center">
+    <div class="m-auto flex justify-center items-center flex-col">
+        <div class="form_type_1 max-w-6xl flex-auto grid grid-cols-3 justify-center">
             <div class="m-3 flex flex-col justify-center">
                 <div class="mb-3">Когда вы начали парить?</div>
                 <div class="">
@@ -44,7 +44,7 @@
                 <input  v-model="date_finish_smoke" class="bg-gray-700 rounded p-3" type="date">
               </div>
             </div>
-            <div class="m-3 flex flex-col justify-center">
+            <div class="form_input m-3 flex flex-col justify-center">
                 <div class="mb-3">Сколько стоила банка жидкости?</div>
                 <div class="">
                     <input  v-model="priceJar" class="bg-gray-700 rounded p-3" type="number" maxlength="4">
@@ -53,7 +53,7 @@
                     </span>
                 </div>
             </div>
-            <div class="m-3 flex flex-col justify-center">
+            <div class="form_input m-3 flex flex-col justify-center">
                 <div class="mb-3">Сколько банок в месяц вы покупаете?</div>
                 <div class="">
                     <input  v-model="countJar" class="bg-gray-700 rounded p-3" type="number" maxlength="2">
@@ -62,7 +62,7 @@
                     </span>
                 </div>
             </div>
-            <div class="m-3 flex flex-col justify-center">
+            <div class="form_input m-3 flex flex-col justify-center">
                 <div class="mb-3">Сколько стоит испаритель?</div>
                 <div class="">
                     <input  v-model="priceCart" class="bg-gray-700 rounded p-3" type="number" maxlength="4">
@@ -71,7 +71,7 @@
                     </span>
                 </div>
             </div>
-            <div class="m-3 flex flex-col justify-center">
+            <div class="form_input m-3 flex flex-col justify-center">
                 <div class="mb-3">Сколько испарителей в месяц вы покупаете?</div>
                 <div class="">
                     <input  v-model="countCart" class="bg-gray-700 rounded p-3" type="number" maxlength="3">
@@ -80,11 +80,31 @@
                     </span>
                 </div>
             </div>
-            <div class="m-3 mt-10">
-                <button @click.prevent="sendData" type="submit" class="px-12 py-4 min-h-min bg-violet-800 rounded-lg">
-                    Отправить
-                </button>
-            </div>
+        </div>
+        <div class="button m-3 mt-10 justify-end">
+          <button @click.prevent="sendData" type="submit" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+            Отправить
+          </button>
         </div>
     </div>
 </template>
+
+<style>
+
+@media (max-width: 900px) {
+    .form_type_1 {
+      grid-template-columns: 290px 290px;
+    }
+}
+
+@media (max-width: 610px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+
+  .form_input input {
+    width: 80%;
+  }
+}
+
+</style>

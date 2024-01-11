@@ -9,9 +9,15 @@ use App\Services\DiaryService;
 use App\Services\Statistic\StatisticService;
 use Illuminate\Http\JsonResponse;
 
+/**
+ * Work with user's progress
+ */
 class ProgressController extends Controller
 {
 
+    /**
+     * @var StatisticService
+     */
     public StatisticService $service;
     public function __construct(StatisticService $service)
     {
@@ -40,7 +46,7 @@ class ProgressController extends Controller
                     'message' => 'Статистика добавлена успешно!'
                 ];
 
-        return response()->json($this->service->storeStatistic($request->validated(), $request->validated()['type_smoke']));
+        return response()->json($response);
     }
 
 

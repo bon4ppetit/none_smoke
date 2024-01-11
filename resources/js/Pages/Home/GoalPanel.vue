@@ -2,6 +2,7 @@
   import GoalEdit from "@/Pages/Home/GoalEdit.vue";
   import {ref} from "vue";
   import Modal from "@/Components/Modal.vue";
+  import Image from "@/Components/Image.vue";
 
   const props = defineProps(['basicInfoSmoke', 'goalsUser'])
 
@@ -50,27 +51,39 @@
     <div class="flex justify-between">
         <div class="flex-auto">
           <div class="flex justify-between">
-            <h2 class="text-white font-bold text-2xl flex">
-              Ваша копилка:
-              <span class="font-bold text-gray-400 block ml-3">
-              {{basicInfoSmoke['money_saving']}}руб.
+            <div class="flex items-center">
+              <h2 class="font-bold mr-4 text-2xl flex text-slate-500">
+                Цели и накопления
+              </h2>
+              <Image class="w-[52px]" path="storage/content_page/goal.png"></Image>
+            </div>
+          </div>
+          <div v-if="viewStringNoneGoal">
+            <span class="text-zinc-400 text-center text-sm">
+              У вас ещё нету цели для накопления. <br>Советуем поставьте её, чтобы накопленные деньги потратились не даром.
             </span>
-            </h2>
             <div class="text-white">
               <button v-on:click="viewGoalEdit = true" class="px-4 py-2 bg-violet-900/80 rounded-lg border-violet-700 border-2">
                 Поставить цель
               </button>
             </div>
           </div>
-          <span class="text-zinc-400 text-center text-sm" v-if="viewStringNoneGoal">
-            У вас ещё нету цели для накопления. <br>Советуем поставьте её, чтобы накопленные деньги потратились не даром.
-          </span>
           <div v-else class="m-4">
-            <h4 class="text-white">
-              Цели:
-            </h4>
+            <div class="flex justify-between items-center">
+              <div class="flex text-gray-400">
+                У вас в копилке:
+                <span class="font-bold text-white ml-3">
+              {{basicInfoSmoke['money_saving']}}руб.
+            </span>
+              </div>
+              <div class="text-white">
+                <button v-on:click="viewGoalEdit = true" class="px-4 py-2 bg-violet-900/80 rounded-lg border-violet-700 border-2">
+                  Поставить цель
+                </button>
+              </div>
+            </div>
             <div v-for="item in goalsUser" :id="item.id" class="flex items-center justify-between my-4">
-              <div @click="viewDeleteButton(item.id)" class="w-full mr-6 duration-700 h-20 flex flex-col justify-center px-6 cursor-pointer border border-gray-200 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+              <div @click="viewDeleteButton(item.id)" class="w-full duration-700 h-20 flex flex-col justify-center px-6 cursor-pointer border rounded-lg border-gray-700 hover:bg-gray-800/50">
                 <div class="text-white flex justify-between">
                   <div class="mb-2">
                     {{ item.name }}
@@ -85,10 +98,10 @@
                 </div>
               </div>
               <div class="relative hidden">
-                <button v-if="!confirmDeleteButton" @click="confirmDeleteButton = true" class="text-red-500 bg-red-900/80 px-3 py-2 rounded-lg border-2 border-red-600">
+                <button v-if="!confirmDeleteButton" @click="confirmDeleteButton = true" class="ml-4 text-red-500 bg-red-900/80 px-3 py-2 rounded-lg border-2 border-red-600">
                   Удалить
                 </button>
-                <button v-if="confirmDeleteButton" @click="deleteGoal(item.id)" class="text-red-500 bg-red-900/80 px-3 py-2 rounded-lg border-2 border-red-600">
+                <button v-if="confirmDeleteButton" @click="deleteGoal(item.id)" class="ml-4 text-red-500 bg-red-900/80 px-3 py-2 rounded-lg border-2 border-red-600">
                   Подтвердить
                 </button>
               </div>

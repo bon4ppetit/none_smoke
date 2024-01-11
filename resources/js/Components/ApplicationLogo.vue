@@ -3,5 +3,5 @@ import Image from "@/Components/Image.vue";
 </script>
 
 <template>
-    <Image path="storage/smoking.png" alt="Icon"></Image>
+    <Image path="storage/app_logo.png" alt="Icon"></Image>
 </template>
