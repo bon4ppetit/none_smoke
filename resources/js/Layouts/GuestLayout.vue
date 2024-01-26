@@ -8,7 +8,11 @@ import Image from "@/Components/Image.vue";
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
         <div>
             <Link href="/">
-                <ApplicationLogo class="w-20 h-21 fill-current text-gray-500" />
+                <div class="flex items-center text-slate-500 font-bold text-5xl">
+                  None Sm
+                <ApplicationLogo class="w-[60px] h-21 mx-1 fill-current text-gray-500" />
+                  ke
+                </div>
             </Link>
         </div>
 
