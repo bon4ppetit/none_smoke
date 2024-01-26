@@ -84,9 +84,9 @@ getMasks();
           Добавить отметку
         </button>
       </div>
-      <div class="py-3 px-20">
+      <div class="px-20">
         <div class="max-w-[1100px]">
-          <div id="list_masks_block" class="relative overflow-x-auto  flex p-10 px-5">
+          <div id="list_masks_block" class="relative overflow-x-auto  flex p-5">
             <div v-for="(mask, idx) in masks">
               <div v-on:click="viewText(idx)" :id="idx" :class="getClassWishVape(mask.wish_vape['status'])[1]">
                 <div class="text-xs text-center p-4">

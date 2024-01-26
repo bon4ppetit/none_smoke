@@ -27,6 +27,7 @@
             }
         })
     }
+
 </script>
 
 <template>
@@ -41,7 +42,7 @@
             <div class="m-3 flex flex-col justify-center">
             <div class="mb-3">Когда вы решили бросить курить?</div>
             <div class="">
-              <input  v-model="date_end_smoke" class="bg-gray-700 rounded p-3" type="date">
+              <input class="bg-gray-700 rounded p-3" type="date" v-model="date_end_smoke">
             </div>
           </div>
             <div class="m-3 flex flex-col justify-center">

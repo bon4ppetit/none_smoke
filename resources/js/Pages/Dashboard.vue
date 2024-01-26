@@ -31,7 +31,7 @@ let viewFormAddRecordDiary = props.lastDiaryRecord.daysFromAddedRecord > 3 || pr
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
                 <div class="overflow-hidden shadow-sm sm:rounded-lg mb-8">
                     <FormQuestion v-if="viewForms === true" :viewForms="viewForms"></FormQuestion>
                     <StructurePanel v-else-if="viewForms === false" :basicInfoSmoke="basicInfoSmoke"></StructurePanel>

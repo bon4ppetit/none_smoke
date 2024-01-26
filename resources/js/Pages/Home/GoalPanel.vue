@@ -4,7 +4,7 @@
   import Modal from "@/Components/Modal.vue";
   import Image from "@/Components/Image.vue";
 
-  const props = defineProps(['basicInfoSmoke', 'goalsUser'])
+  const props = defineProps(['basicInfoSmoke', 'goalsUser', 'viewGoalEdit'])
 
   const viewStringNoneGoal = props.goalsUser === false;
   const viewGoalEdit = ref(false);
@@ -50,7 +50,7 @@
   <div class="p-5">
     <div class="flex justify-between">
         <div class="flex-auto">
-          <div class="flex justify-between">
+          <div class="flex justify-between mb-10">
             <div class="flex items-center">
               <h2 class="font-bold mr-4 text-2xl flex text-slate-500">
                 Цели и накопления
@@ -58,12 +58,14 @@
               <Image class="w-[52px]" path="storage/content_page/goal.png"></Image>
             </div>
           </div>
-          <div v-if="viewStringNoneGoal">
-            <span class="text-zinc-400 text-center text-sm">
-              У вас ещё нету цели для накопления. <br>Советуем поставьте её, чтобы накопленные деньги потратились не даром.
-            </span>
+          <div v-if="viewStringNoneGoal" class="flex flex-col items-center">
+            <div class="max-w-sm text-white bg-slate-700 text-center text-sm px-5 py-3 mb-7 rounded-lg">
+              У вас ещё нету цели для накопления.
+              <br>
+              Советуем поставьте её, чтобы сэкономленные деньги шли на ваше благо.
+            </div>
             <div class="text-white">
-              <button v-on:click="viewGoalEdit = true" class="px-4 py-2 bg-violet-900/80 rounded-lg border-violet-700 border-2">
+              <button v-on:click="viewGoalEdit = true" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                 Поставить цель
               </button>
             </div>
@@ -110,7 +112,7 @@
         </div>
     </div>
       <Modal :show="viewGoalEdit" v-on:close="viewGoalEdit = false">
-        <GoalEdit></GoalEdit>
+        <GoalEdit :viewGoalEdit="viewGoalEdit"></GoalEdit>
       </Modal>
   </div>
 </template>

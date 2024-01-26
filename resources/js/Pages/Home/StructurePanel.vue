@@ -49,7 +49,7 @@ function closeModal() {
       </div>
       <div class="min-h-full max-w-[185px]">
         <div class="mb-4 min-w-full p-6 border rounded-lg shadow border-gray-700">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight">{{ basicInfoSmoke['day_dont_smoke'] }}</h5>
+          <h5 class="mb-2 text-2xl font-bold tracking-tight">{{ basicInfoSmoke['day_dont_smoke'] }} дней</h5>
           <p class="text-gray-400">Продление жизни</p>
         </div>
         <div class="min-w-full p-6 border rounded-lg shadow border-gray-700">

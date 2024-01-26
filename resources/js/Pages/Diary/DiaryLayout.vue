@@ -20,6 +20,10 @@ const props = defineProps([
     <div class="py-12 text-white">
       <DiaryMasks :masks="masks"></DiaryMasks>
     </div>
+    <div class="py-12 text-white">
+      <DiaryMasks :masks="masks"></DiaryMasks>
+    </div>
+
   </AuthenticatedLayout>
 </template>
 
