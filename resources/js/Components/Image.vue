@@ -31,8 +31,6 @@
         }
     }
 
-    console.log(props.path)
-
     getImage(props.path);
 
 </script>

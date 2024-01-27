@@ -30,6 +30,9 @@ function sendForm() {
 
 <template>
     <div class="flex flex-col justify-between h-60 m-auto max-w-xl p-5">
+      <h4 class="text-lg text-slate-100 font-bold">
+        Поставить новую цель
+      </h4>
       <div class="flex items-center justify-between">
         <InputLabel :value="'Введите название цели'"></InputLabel>
         <input v-model="inputName" type="text" maxlength="40" class="bg-gray-900 text-white ml-5 border-0 flex-1 rounded">

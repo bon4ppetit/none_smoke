@@ -36,8 +36,8 @@ let viewFormAddRecordDiary = props.lastDiaryRecord.daysFromAddedRecord > 3 || pr
                     <FormQuestion v-if="viewForms === true" :viewForms="viewForms"></FormQuestion>
                     <StructurePanel v-else-if="viewForms === false" :basicInfoSmoke="basicInfoSmoke"></StructurePanel>
                 </div>
-                <div v-if="viewForms === false && viewFormAddRecordDiary === true" class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-8 p-5">
-                  <DiaryPanel class="w-2/4"></DiaryPanel>
+                <div v-if="viewForms === false && viewFormAddRecordDiary === true" class="overflow-hidden shadow-sm mb-8 flex justify-center">
+                  <DiaryPanel class="width_component w-2/4 bg-gray-800 rounded-lg"></DiaryPanel>
                 </div>
                 <div class="overflow-hidden shadow-sm sm:rounded-lg mb-8" v-if="viewForms === false">
                   <GoalPanel :basicInfoSmoke="basicInfoSmoke" :goalsUser="goalsUser"></GoalPanel>
@@ -49,3 +49,13 @@ let viewFormAddRecordDiary = props.lastDiaryRecord.daysFromAddedRecord > 3 || pr
         </div>
     </AuthenticatedLayout>
 </template>
+
+
+<style>
+@media (max-width: 870px) {
+  .width_component {
+    width: 80%;
+  }
+}
+
+</style>

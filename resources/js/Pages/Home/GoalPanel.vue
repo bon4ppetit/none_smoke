@@ -79,7 +79,7 @@
             </span>
               </div>
               <div class="text-white">
-                <button v-on:click="viewGoalEdit = true" class="px-4 py-2 bg-violet-900/80 rounded-lg border-violet-700 border-2">
+                <button v-on:click="viewGoalEdit = true" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                   Поставить цель
                 </button>
               </div>

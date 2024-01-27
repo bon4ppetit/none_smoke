@@ -65,7 +65,6 @@ let masks = ref({});
 function getMasks(page = 1) {
   axios.get(route('api.diary.get'))
       .then((res) => {
-        console.log(res.data)
         masks.value = res.data;
       })
 }

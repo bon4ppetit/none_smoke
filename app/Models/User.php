@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
+use function Laravel\Prompts\error;
 
 
 /**
@@ -152,9 +153,21 @@ class User extends Authenticatable
         }
     }
 
-    protected static function getCountCigaretteDontSmoke(): int
+    /**
+     * Get count cigarette that user doesn't smoke while not smoking
+     *
+     * @return array|int
+     */
+    protected static function getCountCigaretteDontSmoke(): array|int
     {
-        return 41;
+        //Check type user smoke
+        if (self::getUserTypeSmoke() !== 'cigarette')
+            return [
+                'result' => 'error',
+                'type' => 'Error! Invalid type smoking.'
+            ];
+
+        return UserCigarette::getCountCigaretteDontSmoke();
     }
 
     /**
