@@ -7,6 +7,7 @@ import StructurePanel from "@/Pages/Home/StructurePanel.vue";
 import GoalPanel from "@/Pages/Home/GoalPanel.vue";
 import DiaryPanel from "@/Pages/Diary/DiaryPanel.vue";
 import Image from "@/Components/Image.vue";
+import MotivationPanel from "@/Pages/Home/MotivationPanel.vue";
 
 const props = defineProps([
     'basicInfoSmoke',
@@ -36,10 +37,11 @@ let viewFormAddRecordDiary = props.lastDiaryRecord.daysFromAddedRecord > 3 || pr
                     <FormQuestion v-if="viewForms === true" :viewForms="viewForms"></FormQuestion>
                     <StructurePanel v-else-if="viewForms === false" :basicInfoSmoke="basicInfoSmoke"></StructurePanel>
                 </div>
-                <div v-if="viewForms === false && viewFormAddRecordDiary === true" class="overflow-hidden shadow-sm mb-8 flex justify-center">
-                  <DiaryPanel class="width_component w-2/4 bg-gray-800 rounded-lg"></DiaryPanel>
-                </div>
-                <div class="overflow-hidden shadow-sm sm:rounded-lg mb-8" v-if="viewForms === false">
+                <div v-if="viewForms === false" class="overflow-hidden shadow-sm sm:rounded-lg">
+                  <MotivationPanel></MotivationPanel>
+                  <div v-if="viewFormAddRecordDiary === true" class="overflow-hidden shadow-sm mb-8 flex justify-center">
+                    <DiaryPanel class="width_component w-2/4 bg-gray-800 rounded-lg"></DiaryPanel>
+                  </div>
                   <GoalPanel :basicInfoSmoke="basicInfoSmoke" :goalsUser="goalsUser"></GoalPanel>
                 </div>
             </div>
