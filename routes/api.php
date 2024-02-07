@@ -31,7 +31,7 @@ Route::prefix('progress')->group(function () {
 Route::prefix('profile')->group(function () {
     Route::post('goal/destroy', [GoalController::class, 'destroy'])->name('goal.destroy');
     Route::post('goal', [GoalController::class, 'add'])->name('goal.add');
-    Route::get('motivation', [MotivationController::class, 'checkUserMotivation']);
+    Route::get('motivation', [MotivationController::class, 'getMotivation']);
 });
 
 Route::prefix('diary')->group(function () {

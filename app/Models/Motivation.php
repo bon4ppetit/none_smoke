@@ -5,13 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Model for Motivation Logic
+ */
 class Motivation extends Model
 {
+    /**
+     * Check, day is in list with important day
+     *
+     * @return bool
+     */
     public static function checkMainDayMotivation(): bool
     {
         return in_array(User::getDayDontSmoke(), self::getAllMainDaysMotivation());
     }
 
+    /**
+     * Get all the important days that are in the list
+     *
+     * @return array
+     */
     public static function getAllMainDaysMotivation(): array
     {
         $jsonData = Json::getContent('motivation/motivation_main_day');
@@ -19,7 +32,14 @@ class Motivation extends Model
         return array_keys((array)json_decode($jsonData));
     }
 
-    public static function getTextMotivation($key, $isMainDay)
+    /**
+     * Get text | sentence motivation from lite or important list
+     *
+     * @param $key
+     * @param $isMainDay
+     * @return mixed
+     */
+    public static function getTextMotivation($key, $isMainDay): mixed
     {
         $jsonData = Json::getContent('motivation/motivation_main_day');
 
