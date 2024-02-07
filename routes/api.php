@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\MotivationController;
 use App\Http\Controllers\API\ProgressController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,7 @@ Route::prefix('progress')->group(function () {
 Route::prefix('profile')->group(function () {
     Route::post('goal/destroy', [GoalController::class, 'destroy'])->name('goal.destroy');
     Route::post('goal', [GoalController::class, 'add'])->name('goal.add');
+    Route::get('motivation', [MotivationController::class, 'checkUserMotivation']);
 });
 
 Route::prefix('diary')->group(function () {

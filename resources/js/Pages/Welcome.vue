@@ -22,7 +22,7 @@ defineProps({
     <div
         class="bg-gray-100 dark:bg-gray-900 text-white selection:bg-red-500 selection:text-white px-5"
     >
-      <div class="pt-12 min-h-screen">
+      <div class="pt-12 min-h-screen mb-10">
         <div class="wrapper-content flex flex-col items-center justify-center min-h-[200px]">
           <h1 class="text-slate-500 font-bold text-8xl">
             <div class="flex">
@@ -31,14 +31,29 @@ defineProps({
           </h1>
           <span class="text-slate-500">Оставь привычку курить позади!</span>
         </div>
-        <div class="wrapper-content min-h-[400px] flex justify-between items-center relative top-[60px]">
+        <div class="wrapper-content mb-[420px] pt-[80px]">
+            <div class="max-w-4xl m-auto flex justify-between text-base">
+              <div class="flex">
+                <p class="mr-3 text-slate-500">
+                  Бросаете курить?
+                  <br>
+                  Или только думаете об этом?
+                </p>
+                <Image class="w-[46px]" path="storage/welcome_page/6.png"></Image>
+              </div>
+              <div class="flex">
+                <p class="text-slate-500 mr-3">
+                  Из за курения у вас плохое самочувствие?
+                  <br>
+                  Переживаете из за проблем со здоровьем?
+                </p>
+                <Image class="w-[46px]" path="storage/welcome_page/7.png"></Image>
+              </div>
+            </div>
+        </div>
+        <div class="wrapper-content min-h-[300px] flex justify-between items-center pt-[180px]">
           <div class="w-full flex justify-between">
             <div class="max-w-xs text-sm flex-2">
-              <p class="p-3 border-2 rounded-lg border-slate-700 mb-6">
-                Бросаете курить?
-                <br>
-                Или только думаете об этом?
-              </p>
               <p class="p-3 border-2 rounded-lg border-slate-700">
                 Мы поможем вам расстатья с этой вредной привычной!
               </p>

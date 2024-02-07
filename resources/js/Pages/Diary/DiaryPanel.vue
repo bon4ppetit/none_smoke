@@ -48,7 +48,7 @@
         <Image class="w-[32px]" path="storage/content_page/clock_for_mark.png"></Image>
       </div>
       <p class="style_on_screen-550">
-        Отметьте ваши впечатления о последних днях в борьбе с зависимостью
+        Отметьте ваши впечатления о последних днях в борьбе с курением
       </p>
     </div>
     <div class="style_on_screen-550 p-5 text-white">
