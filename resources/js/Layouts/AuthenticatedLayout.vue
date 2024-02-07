@@ -166,3 +166,12 @@ const showingNavigationDropdown = ref(false);
         </div>
     </div>
 </template>
+
+
+<style>
+
+@media (max-width: ) {
+  
+}
+
+</style>

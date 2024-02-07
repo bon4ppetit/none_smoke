@@ -31,12 +31,10 @@ getMotivationSentence();
         </p>
       </template>
       <template v-else-if="jsonData.isMainDay === false">
-          <h4 class="text-xl font-bold text-slate-500 mb-3">
-            Интересный факт
-          </h4>
-          <p class="text-center">
-            {{ jsonData.text }}
-          </p>
+        <div class="block p-6 border rounded-lg shadow bg-gray-800 border-gray-700">
+          <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Интересный факт</h5>
+          <p class="font-normal text-gray-400">{{ jsonData.text }}</p>
+        </div>
       </template>
     </div>
   </div>
