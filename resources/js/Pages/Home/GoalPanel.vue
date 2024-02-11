@@ -100,10 +100,10 @@
                 </div>
               </div>
               <div class="relative hidden">
-                <button v-if="!confirmDeleteButton" @click="confirmDeleteButton = true" class="ml-4 text-red-500 bg-red-900/80 px-3 py-2 rounded-lg border-2 border-red-600">
+                <button v-if="!confirmDeleteButton" @click="confirmDeleteButton = true" class="ml-4 text-red-500 bg-red-900/80 px-3 py-1 rounded-lg border-2 border-red-600">
                   Удалить
                 </button>
-                <button v-if="confirmDeleteButton" @click="deleteGoal(item.id)" class="ml-4 text-red-500 bg-red-900/80 px-3 py-2 rounded-lg border-2 border-red-600">
+                <button v-if="confirmDeleteButton" @click="deleteGoal(item.id)" class="ml-4 text-red-500 bg-red-900/80 px-3 py-1 rounded-lg border-2 border-red-600">
                   Подтвердить
                 </button>
               </div>
