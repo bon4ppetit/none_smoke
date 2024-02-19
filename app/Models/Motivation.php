@@ -41,7 +41,8 @@ class Motivation extends Model
      */
     public static function getTextMotivation($key, $isMainDay): mixed
     {
-        $jsonData = Json::getContent('motivation/motivation_main_day');
+        $jsonData = json_decode(Json::getContent('motivation/motivation_main_day'));
+        $key = $isMainDay;
 
         if ($isMainDay === false) {
 

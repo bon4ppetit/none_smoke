@@ -1,7 +1,8 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import DiaryMasks from "@/Pages/Diary/DiaryMasks.vue";
+import DiaryWishVape from "@/Pages/Diary/DiaryWishVape.vue";
+import DiaryRecord from "@/Pages/Diary/DiaryRecord.vue";
 
 const props = defineProps([
     'masks',
@@ -18,10 +19,10 @@ const props = defineProps([
       </h2>
     </template>
     <div class="py-12 text-white">
-      <DiaryMasks :masks="masks"></DiaryMasks>
+      <DiaryWishVape :masks="masks"></DiaryWishVape>
     </div>
     <div class="py-12 text-white">
-      <DiaryMasks :masks="masks"></DiaryMasks>
+      <DiaryRecord :masks="masks"></DiaryRecord>
     </div>
 
   </AuthenticatedLayout>

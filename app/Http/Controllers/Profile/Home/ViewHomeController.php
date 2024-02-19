@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Profile\Home;
 
 use App\Http\Controllers\API\DiaryController;
 use App\Http\Controllers\Controller;
-use App\Models\Diary;
+use App\Models\DiaryWishVape;
 use App\Models\Goal;
 use App\Models\User;
 use Inertia\Inertia;
@@ -23,8 +23,8 @@ class ViewHomeController extends Controller
         return Inertia::render('Dashboard', [
             'basicInfoSmoke' => User::getBasicInfoSmoke(),
             'lastDiaryRecord' => [
-                'lastRecordData' => Diary::getLastRecord(),
-                'daysFromAddedRecord' => Diary::getDiffCurrentDateAndLastRecordDate()
+                'lastRecordData' => DiaryWishVape::getLastRecord(),
+                'daysFromAddedRecord' => DiaryWishVape::getDiffCurrentDateAndLastRecordDate()
             ],
             'goalsUser' => Goal::getGoal(),
         ]);

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Repositories\SmokeRepository;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,7 +25,7 @@ use function Laravel\Prompts\error;
  * @method resetProgress,
  *
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;

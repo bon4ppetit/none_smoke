@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('diary', function (Blueprint $table) {
+        Schema::create('achieves', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->text('text');
-            $table->integer('wish_vape');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('diary');
+        Schema::dropIfExists('achieves');
     }
 };

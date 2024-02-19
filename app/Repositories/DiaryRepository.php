@@ -10,7 +10,7 @@ class DiaryRepository implements DiaryRepositoryInterface
 {
     public static function getAllUserMasks(): \Illuminate\Support\Collection
     {
-        $masks = DB::table('diary')->select(['id', 'wish_vape', 'text', 'user_id', 'created_at'])
+        $masks = DB::table('diary_wish_vape')->select(['id', 'wish_vape', 'text', 'user_id', 'created_at'])
             ->where('user_id', auth()->user()->id)
             ->orderByDesc('created_at')
             ->get();

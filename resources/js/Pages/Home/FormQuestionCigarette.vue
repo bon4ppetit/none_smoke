@@ -77,7 +77,7 @@
                 <div class="">
                     <input class="bg-gray-700 rounded p-3" type="number" v-model="nicotine">
                     <span class="ml-2">
-                        шт.
+                        мг
                     </span>
                 </div>
             </div>

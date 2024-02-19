@@ -13,8 +13,12 @@
         wish_vape: wishVape
       })
       .then((res) => {
+
         if (res.data.code === "ERR_BAD_REQUEST_NUM_WISH_VAPE")
           errorValidateForm.value = [1, res.data.message];
+        else if(res.data.code === "ERR_IS_TODAY") {
+          errorValidateForm.value = [3, res.data.message];
+        }
         else {
           window.location.reload();
         }
@@ -43,9 +47,9 @@
 <template>
   <div class="p-7">
     <div class="text-white">
-      <div class="flex items-center mb-4">
-        <h3 class="text-2xl font-bold mr-2">Время для отметки</h3>
-        <Image class="w-[32px]" path="storage/content_page/clock_for_mark.png"></Image>
+      <div class="flex items-center mb-2">
+        <Image class="w-[23px]" path="storage/content_page/clock_for_mark.png"></Image>
+        <h3 class="font-bold ml-2 text-slate-400 text-xl">Время для отметки</h3>
       </div>
       <p class="style_on_screen-550">
         Отметьте ваши впечатления о последних днях в борьбе с курением
@@ -86,6 +90,7 @@
       </p>
       <input type="text" v-model="inputData" class="text-sm bg-gray-900 text-white border-0 rounded w-full">
       <InputError v-if="errorValidateForm[0] === 2" :message="errorValidateForm[1]"></InputError>
+      <InputError v-if="errorValidateForm[0] === 3" :message="errorValidateForm[1]"></InputError>
     </div>
     <div class="mt-2 flex justify-end w-full">
       <button @click="sendForm" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">

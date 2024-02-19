@@ -5,6 +5,7 @@ use App\Http\Controllers\Profile\Home\ViewAchievementsController;
 use App\Http\Controllers\Profile\Home\ViewDiaryController;
 use App\Http\Controllers\Profile\Home\ViewHomeController;
 use App\Http\Controllers\ProfileController;
+use App\Models\DiaryRecord;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -45,6 +46,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::prefix('diary')->group(function () {
+    Route::prefix('record')->group(function () {
+        Route::get('/', [DiaryRecord::class, 'get'])->name('diary-record.get');
+        Route::post('/', [DiaryRecord::class, 'add'])->name('diary-record.add');
+        Route::put('/{id}', [DiaryRecord::class, 'update'])->name('diary-record.update');
+        Route::delete('/{id}', [DiaryRecord::class, 'delete'])->name('diary-record.delete');
+    });
+    Route::prefix('wish_vape')->group(function () {
+
+    });
 });
 
 require __DIR__ . '/auth.php';

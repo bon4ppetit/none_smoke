@@ -12,11 +12,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @mixin Builder
 */
-class Diary extends Model
+class DiaryWishVape extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'diary';
+    protected $table = 'diary_wish_vape';
     protected $guarded = false;
 
     protected $fillable = [
@@ -37,24 +37,14 @@ class Diary extends Model
      */
     public static function getLastRecord(): mixed
     {
-        $record = self::where('user_id', auth()->user()->id)
+        return self::where('user_id', auth()->user()->id)
             ->orderBy('created_at', 'DESC')->first();
-
-        return $record;
     }
 
     public static function getDiffCurrentDateAndLastRecordDate(): ?int
     {
         $lastRecordDate = self::getLastRecord()?->created_at;
 
-        if ($lastRecordDate !== null) {
-            $now = time();
-            $your_date = strtotime($lastRecordDate);
-            $datediff = $now - $your_date;
-
-            return floor($datediff / (60 * 60 * 24));
-        }
-
-        return null;
+        return $lastRecordDate === null ? null : floor(time() - strtotime($lastRecordDate) / (60 * 60 * 24));
     }
 }
