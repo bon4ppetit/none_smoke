@@ -43,7 +43,7 @@ class UserCigarette extends Model
      */
     protected function getMoneySavingCigarette(): float|int
     {
-        $dataUser = User::getDataSmokeDBUser();
+        $dataUser = User::getDataSmokeDBUser()[0];
 
         return round(self::getCountCigaretteDontSmoke() / $dataUser->count_cigarettes_in_pack) * $dataUser->money_on_pack_cigarette;
     }
@@ -54,7 +54,7 @@ class UserCigarette extends Model
      */
     protected function getMoneySpendCigarette(): float|int
     {
-        $dataUser = User::getDataSmokeDBUser();
+        $dataUser = User::getDataSmokeDBUser()[0];
         $spendMoneyInMonth = (30 / ($dataUser->count_cigarettes_in_pack / $dataUser->count_smoke_cigarettes_a_day)) * $dataUser->money_on_pack_cigarette;
 
         return round($spendMoneyInMonth);
@@ -66,7 +66,7 @@ class UserCigarette extends Model
      */
     protected function getCountCigaretteDontSmoke(): int
     {
-        $dataUser = User::getDataSmokeDBUser();
+        $dataUser = User::getDataSmokeDBUser()[0];
         $countCigarette = User::getDayDontSmoke() * $dataUser->count_smoke_cigarettes_a_day;
 
         return round($countCigarette);

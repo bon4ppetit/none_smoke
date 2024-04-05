@@ -50,7 +50,6 @@ class Motivation extends Model
             $key = rand(1, count((array)$jsonData));
         }
 
-        return $jsonData->$key;
+        return $jsonData->data->$key;
     }
-
 }

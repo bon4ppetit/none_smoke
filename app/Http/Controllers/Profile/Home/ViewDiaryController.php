@@ -17,6 +17,6 @@ class ViewDiaryController extends Controller
      */
     public function __invoke()
     {
-        return Inertia::render('Diary/DiaryLayout');
+        return Inertia::render('Diary/DiaryLayout', ['masks' => DiaryController::getMasks()]);
     }
 }

@@ -6,7 +6,6 @@
 
   const props = defineProps(['basicInfoSmoke', 'goalsUser', 'viewGoalEdit'])
 
-  const viewStringNoneGoal = props.goalsUser === false;
   const viewGoalEdit = ref(false);
   let goalIsSucceed = ref(false);
   let confirmDeleteButton = ref(false);
@@ -52,13 +51,13 @@
         <div class="flex-auto">
           <div class="flex justify-between mb-10">
             <div class="flex items-center">
-              <h2 class="font-bold mr-4 text-2xl flex text-slate-500">
+              <h2 class="font-bold mr-1 text-2xl flex text-slate-500">
                 Цели и накопления
               </h2>
-              <Image class="w-[52px]" path="storage/content_page/goal.png"></Image>
+              <Image class="w-[52px]" path="storage/profile/dashboard/goal.png"></Image>
             </div>
           </div>
-          <div v-if="viewStringNoneGoal" class="flex flex-col items-center">
+          <div v-if="goalsUser === false" class="flex flex-col items-center">
             <div class="max-w-sm text-white bg-slate-700 text-center text-sm px-5 py-3 mb-7 rounded-lg">
               У вас ещё нету цели для накопления.
               <br>

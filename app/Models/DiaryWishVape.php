@@ -41,10 +41,9 @@ class DiaryWishVape extends Model
             ->orderBy('created_at', 'DESC')->first();
     }
 
-    public static function getDiffCurrentDateAndLastRecordDate(): ?int
+    public static function getDiffCurrentDateAndLastRecordDate()
     {
         $lastRecordDate = self::getLastRecord()?->created_at;
-
-        return $lastRecordDate === null ? null : floor(time() - strtotime($lastRecordDate) / (60 * 60 * 24));
+        return $lastRecordDate === null ? null : abs(floor((time() - strtotime($lastRecordDate)) / (60 * 60 * 24)));
     }
 }

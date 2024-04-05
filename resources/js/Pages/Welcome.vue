@@ -36,17 +36,23 @@ function viewPanel(currentPanel, nextPanel) {
 <template>
     <Head title="None Smoke" />
     <div
-        class="bg-gray-100 dark:bg-gray-900 text-white selection:bg-red-500 selection:text-white px-5"
+        class="bg-gray-900 text-white selection:bg-red-500 selection:text-white px-5"
     >
-      <div class="pt-12 min-h-screen mb-10 flex items-center">
+      <div class="pt-12 min-h-screen flex items-center">
         <div class="wrapper-panel flex flex-auto m-auto items-center justify-center min-h-[400px]">
-          <div class="max-w-[50%] p-8 flex-auto text-center">
-            <h1 class="text-slate-500 font-bold text-6xl">
-              <div class="flex justify-center">
-                <span>None Sm</span><ApplicationLogo class="w-[65px] h-[65px]"></ApplicationLogo><span>ke</span>
-              </div>
-            </h1>
-            <span class="text-slate-500">Оставь привычку курить позади!</span>
+          <div class="max-w-[50%] flex-auto min-h-full text-center">
+            <div class="mb-[15px]">
+              <h1 class="text-slate-500 font-bold text-5xl">
+                <div class="flex justify-center">
+                  <span>None Sm</span><ApplicationLogo class="w-[45px] h-[45px]"></ApplicationLogo><span>ke</span>
+                </div>
+              </h1>
+              <span class="text-slate-500">Оставь привычку курить позади!</span>
+            </div>
+            <div class="max-w-[300px] m-auto">
+              Мы предлагаем вам простой и удобный <span class="text-pink-500">способ</span> отслеживать свой прогресс <span class="text-pink-500"><br>в борьбе с курением</span>
+
+            </div>
           </div>
           <div v-if="showingPanel === 1" class="panel-1 max-w-[50%] flex-auto flex flex-col justify-center items-center min-h-full">
             <p class="max-w-[350px] p-3 border-2 rounded-lg border-slate-700 mb-[20px]">
@@ -128,7 +134,7 @@ function viewPanel(currentPanel, nextPanel) {
             </div>
           </div>
           <div v-if="showingPanel === 5" class="panel-5 max-w-[50%] flex-auto flex flex-col p-8 justify-center items-center min-h-full">
-            <h3 class="text-slate-500 w-full font-bold text-2xl mb-[20px]">
+            <h3 class="text-slate-500 w-full font-bold text-xl mb-[20px]">
               Начни новый образ жизни
               с небольшого шага!
             </h3>

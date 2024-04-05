@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('achieves', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('goal');
             $table->timestamps();
         });
     }

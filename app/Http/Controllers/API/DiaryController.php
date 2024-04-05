@@ -7,6 +7,7 @@ use App\Http\Requests\DiaryRequest;
 use App\Models\Diary;
 use App\Repositories\DiaryRepository;
 use App\Services\DiaryService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
@@ -27,7 +28,7 @@ class DiaryController extends Controller
      * Adding new mask for user
      *
      * @param DiaryRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function add(DiaryRequest $request)
     {

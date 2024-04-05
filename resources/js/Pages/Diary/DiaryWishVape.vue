@@ -4,6 +4,10 @@ import DiaryPanel from "@/Pages/Diary/DiaryPanel.vue";
 import Modal from "@/Components/Modal.vue";
 import {ref} from "vue";
 
+const props = defineProps([
+  'masks',
+]);
+
 let viewModal = ref(false);
 
 function getClassWishVape(status) {
@@ -35,6 +39,7 @@ function viewText(key) {
     document.getElementsByClassName('w-80')[0].getElementsByClassName('text-mask')[0].classList.add('hidden');
     document.getElementsByClassName('w-80')[0].lastChild.childNodes[0].classList.remove('rotate_arrow');
     document.getElementsByClassName('w-80')[0].classList.replace('w-80', 'w-40');
+    currentActiveMask = null;
 
     return;
   }
@@ -60,15 +65,6 @@ function viewText(key) {
   //Animated Arrow Image
   div.lastChild.childNodes[0].classList.add('rotate_arrow')
 }
-
-let masks = ref({});
-function getMasks(page = 1) {
-  axios.get(route('api.diary.get'))
-      .then((res) => {
-        masks.value = res.data;
-      })
-}
-getMasks();
 
 </script>
 
@@ -98,7 +94,7 @@ getMasks();
                   {{mask.text}}
                 </p>
                 <div class="flex justify-end">
-                  <Image path="storage/icons/vector-2.svg" :class="getClassWishVape(mask.wish_vape['status'])[0]" text-alt="Img Arrow"></Image>
+                  <Image path="storage/icons/arrow-2.png" :class="getClassWishVape(mask.wish_vape['status'])[0] + ' rotate-270 w-[45px]'" text-alt="Img Arrow"></Image>
                 </div>
               </div>
             </div>

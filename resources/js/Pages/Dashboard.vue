@@ -18,6 +18,8 @@ const props = defineProps([
 let viewForms = props.basicInfoSmoke !== false ? ref(false) : ref(true);
 let viewFormAddRecordDiary = props.lastDiaryRecord.daysFromAddedRecord > 3 || props.lastDiaryRecord.daysFromAddedRecord === null ? ref(true) : ref(false);
 
+console.log(props.lastDiaryRecord.daysFromAddedRecord);
+
 </script>
 
 <template>
@@ -26,7 +28,7 @@ let viewFormAddRecordDiary = props.lastDiaryRecord.daysFromAddedRecord > 3 || pr
     <AuthenticatedLayout>
         <template #header>
             <div class="flex">
-              <Image class="mr-2 relative top-[-2px]" path="storage/icons/home_icon.svg"></Image>
+              <Image class="mr-2 relative w-[22px] h-[22px]" path="storage/icons/home_icon.png"></Image>
               <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Главная</h2>
             </div>
         </template>

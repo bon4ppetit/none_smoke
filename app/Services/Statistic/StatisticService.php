@@ -3,7 +3,6 @@
 namespace App\Services\Statistic;
 
 use App\Models\UserCigarette;
-use App\Models\UserVape;
 use App\Services\Profile\ProfileService;
 
 class StatisticService
@@ -12,7 +11,7 @@ class StatisticService
      *  Store the user's profile statistic
      * @param $data
      * @param string $type
-     * @return false|UserCigarette|UserVape
+     * @return false|UserCigarette
      */
     public function storeStatistic($data, string $type)
     {
@@ -21,8 +20,6 @@ class StatisticService
 
         unset($data['type_smoke']);
 
-        if ($type === 'cigarette') return UserCigarette::create($data);
-        elseif ($type === 'vape') return UserVape::create($data);
-        else return false;
+        return UserCigarette::create($data);
     }
 }

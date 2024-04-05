@@ -35,7 +35,7 @@ getMotivationSentence();
         <div class="block p-6 border rounded-lg shadow bg-gray-800 border-gray-700">
           <div class="flex items-center justify-center mb-2">
             <h5 class="mr-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Интересный факт</h5>
-            <Image class="w-[42px]" path="storage/content_page/interesting_fact.png"></Image>
+            <Image class="w-[36px]" path="storage/profile/dashboard/interesting_facts.png"></Image>
           </div>
           <p class="font-normal text-gray-400">{{ jsonData.text }}</p>
         </div>

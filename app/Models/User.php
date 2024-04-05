@@ -69,26 +69,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected static function getDataSmokeDBUser(): mixed
     {
-        if (self::getUserTypeSmoke() === 'vape') {
-            return SmokeRepository::getDataSmokeDBVapeTypeRepository();
-        } elseif (self::getUserTypeSmoke() === 'cigarette') {
-            return SmokeRepository::getDataSmokeDBCigaretteTypeRepository();
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Get the user's type smoke
-     * @return bool|string
-     */
-    protected static function getUserTypeSmoke(): bool|string
-    {
-        if (auth()->user()->type_smoke === null) {
-            return false;
-        } else {
-            return auth()->user()->type_smoke;
-        }
+        return SmokeRepository::getDataSmokeDBRepository();
     }
 
 
@@ -99,7 +80,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected static function getDayDontSmoke(): string
     {
         if (self::getDataSmokeDBUser()) {
-            $userStatistic = self::getDataSmokeDBUser()->date_finish_smoke;
+            $userStatistic = self::getDataSmokeDBUser()[0]->date_finish_smoke;
             return Carbon::now()->diffInDays($userStatistic);
         } else {
             return false;
@@ -112,13 +93,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected static function getMoneySaving(): int
     {
-        if (self::getUserTypeSmoke() === 'vape') {
-            return UserVape::getMoneySavingVape();
-        } elseif (self::getUserTypeSmoke() === 'cigarette') {
-            return UserCigarette::getMoneySavingCigarette();
-        } else {
-            return false;
-        }
+        return UserCigarette::getMoneySavingCigarette();
     }
 
     /**
@@ -127,13 +102,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected static function getMoneySpend(): int
     {
-        if (self::getUserTypeSmoke() === 'vape') {
-            return UserVape::getMoneySpendVape();
-        } elseif (self::getUserTypeSmoke() === 'cigarette') {
-            return UserCigarette::getMoneySpendCigarette();
-        } else {
-            return false;
-        }
+        return UserCigarette::getMoneySpendCigarette();
     }
 
     /**
@@ -142,16 +111,15 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected static function getBasicInfoSmoke(): array|bool
     {
-        if (self::getUserTypeSmoke()) {
-            return [
-                'money_spend' => self::getMoneySpend(),
-                'money_saving' => self::getMoneySaving(),
-                'day_dont_smoke' => self::getDayDontSmoke(),
-                'count_cigarette_dont_smoke' => self::getCountCigaretteDontSmoke()
-            ];
-        } else {
+        if (count(self::getDataSmokeDBUser()) === 0) {
             return false;
         }
+        return [
+            'money_spend' => self::getMoneySpend(),
+            'money_saving' => self::getMoneySaving(),
+            'day_dont_smoke' => self::getDayDontSmoke(),
+            'count_cigarette_dont_smoke' => self::getCountCigaretteDontSmoke()
+        ];
     }
 
     /**
@@ -161,13 +129,6 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected static function getCountCigaretteDontSmoke(): array|int
     {
-        //Check type user smoke
-        if (self::getUserTypeSmoke() !== 'cigarette')
-            return [
-                'result' => 'error',
-                'type' => 'Error! Invalid type smoking.'
-            ];
-
         return UserCigarette::getCountCigaretteDontSmoke();
     }
 
@@ -179,7 +140,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected static function resetProgress(): array
     {
         try {
-            DB::table('user_type_' . self::getUserTypeSmoke())
+            DB::table('user_type_cigarette')
                 ->where('user_id', auth()->user()->id)
                 ->update(['date_finish_smoke' => Carbon::now()->toDateString()]);
 

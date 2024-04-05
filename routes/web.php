@@ -40,6 +40,7 @@ Route::prefix('profile/achievement')->group(function () {
 
 Route::prefix('profile/diary')->group(function () {
     Route::get('/', ViewDiaryController::class)->name('diary.home');
+
 });
 
 Route::middleware('auth')->group(function () {

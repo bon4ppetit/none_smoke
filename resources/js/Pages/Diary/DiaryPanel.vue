@@ -48,8 +48,8 @@
   <div class="p-7">
     <div class="text-white">
       <div class="flex items-center mb-2">
-        <Image class="w-[23px]" path="storage/content_page/clock_for_mark.png"></Image>
-        <h3 class="font-bold ml-2 text-slate-400 text-xl">Время для отметки</h3>
+        <h3 class="font-bold mr-1 text-slate-400 text-2xl">Время для отметки</h3>
+        <Image class="w-[53px]" path="storage/profile/dashboard/clock_for_mark.png"></Image>
       </div>
       <p class="style_on_screen-550">
         Отметьте ваши впечатления о последних днях в борьбе с курением

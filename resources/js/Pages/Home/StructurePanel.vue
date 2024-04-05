@@ -26,15 +26,15 @@ function closeModal() {
           <div class="block_data-animate-1 h-full relative top-[-20px] left-[-20px] bg-gradient-to-br from-purple-500 to-gray-900 "></div>
         </div>
         <div class="min-w-full p-6 border mb-4 rounded-lg shadow border-gray-700 overflow-hidden">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight relative z-1">{{ basicInfoSmoke['count_cigarette_dont_smoke'] }} сигарет</h5>
+          <h5 class="mb-2 text-xl font-bold tracking-tight relative z-1">{{ basicInfoSmoke['count_cigarette_dont_smoke'] }} сигарет</h5>
           <p class="text-gray-400 relative z-1">Не выкуренно</p>
         </div>
-        <div class="absolute w-[185px] h-[112.5px] z-0 overflow-hidden rounded-lg">
+        <div class="absolute w-[185px] h-[109px] z-0 overflow-hidden rounded-lg">
           <div class="block_data-animate-2 h-full relative top-[20px] left-[-20px] bg-gradient-to-bl from-gray-900 to-purple-500"></div>
         </div>
         <div class="flex flex-col items-center relative z-1">
           <div class="min-w-full p-6 border rounded-lg shadow border-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight">{{ basicInfoSmoke['money_saving'] }} руб.</h5>
+            <h5 class="mb-2 text-xl font-bold tracking-tight">{{ basicInfoSmoke['money_saving'] }} руб.</h5>
             <p class="font-normal text-gray-400">Вы сэкономили</p>
           </div>
         </div>
@@ -58,14 +58,14 @@ function closeModal() {
           <div class="block_data-animate-3 h-full relative top-[-20px] left-[20px] bg-gradient-to-tr from-gray-900 to-purple-500"></div>
         </div>
         <div class="mb-4 min-w-full p-6 border rounded-lg shadow border-gray-700 relative z-1">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight">{{ basicInfoSmoke['day_dont_smoke'] }} дней</h5>
+          <h5 class="mb-2 text-xl font-bold tracking-tight">{{ basicInfoSmoke['day_dont_smoke'] }} дней</h5>
           <p class="text-gray-400">Продление жизни</p>
         </div>
-        <div class="absolute w-[183px] h-[113px] z-0 overflow-hidden rounded-lg">
-          <div class="block_data-animate-4 h-full relative top-6 left-3 bg-gradient-to-br from-gray-900 to-purple-500 "></div>
+        <div class="absolute w-[183px] h-[109px] z-0 overflow-hidden rounded-lg">
+          <div class="block_data-animate-4 h-full relative top-5 left-3 bg-gradient-to-br from-gray-900 to-purple-500 "></div>
         </div>
         <div class="min-w-full p-6 border rounded-lg shadow border-gray-700 relative z-1">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight">{{ basicInfoSmoke['money_spend'] }} руб.</h5>
+          <h5 class="mb-2 text-xl font-bold tracking-tight">{{ basicInfoSmoke['money_spend'] }} руб.</h5>
           <p class="text-gray-400">
             Вы потратили
           </p>
